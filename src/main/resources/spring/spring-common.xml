@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx" xmlns:jee="http://www.springframework.org/schema/jee"
+	xmlns:lang="http://www.springframework.org/schema/lang" xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:task="http://www.springframework.org/schema/task" 
+	xsi:schemaLocation="
+     http://www.springframework.org/schema/beans 
+     http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+     http://www.springframework.org/schema/tx
+     http://www.springframework.org/schema/tx/spring-tx-3.1.xsd
+     http://www.springframework.org/schema/aop 
+     http://www.springframework.org/schema/aop/spring-aop-3.1.xsd
+     http://www.springframework.org/schema/jee 
+     http://www.springframework.org/schema/jee/spring-jee-3.1.xsd
+     http://www.springframework.org/schema/context
+     http://www.springframework.org/schema/context/spring-context-3.1.xsd
+     http://www.springframework.org/schema/lang
+     http://www.springframework.org/schema/lang/spring-lang-3.1.xsd
+     http://www.springframework.org/schema/util
+     http://www.springframework.org/schema/util/spring-util-3.1.xsd
+     http://www.springframework.org/schema/task  
+	 http://www.springframework.org/schema/task/spring-task-3.1.xsd ">
+     
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="configLocation" value="classpath:/mybatis/sqlMapConfig.xml" />
+		<property name="mapperLocations" value="classpath:/mybatis/**/*Mapper.xml" />
+	</bean>
+	<bean id="baseDAO" class="org.mybatis.spring.mapper.MapperFactoryBean" abstract="true" lazy-init="true">
+		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>
+	
+	<!-- task任务扫描注解 >
+	<task:annotation-driven /-->
+	
+	<!-- 自动检测并装配 -->
+	<context:component-scan base-package="*" use-default-filters="false">
+		<context:include-filter type="regex" expression="com.lishao.trader.*"/>
+		<context:include-filter type="regex" expression="com.lishao.manage.*"/>
+		<context:exclude-filter type="regex" expression="com.lishao.trader.task.*"/>
+	 </context:component-scan>
+	
+	<!-- 通过扫描的模式，扫描所有目录DAO -->
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="basePackage"
+			value="com.lishao.trader.*.dao" />
+	</bean>
+</beans>

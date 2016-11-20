@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lishao.trader.stock.dao.ProcedureMapper" >  
+	<select id="prcStockKlineDDownload" parameterType="Map" statementType="CALLABLE">  
+    	{call PRC_GP_StockKlineD_DOWNLOAD(#{objectCode, jdbcType=VARCHAR, mode=IN},  
+                              #{periodCode, jdbcType=VARCHAR, mode=IN},
+                              #{priceOpen, jdbcType=NUMERIC, mode=IN},
+                              #{priceHigh, jdbcType=NUMERIC, mode=IN},
+                              #{priceLow, jdbcType=NUMERIC, mode=IN},
+                              #{priceClose, jdbcType=NUMERIC, mode=IN},
+                              #{tradeVolumn, jdbcType=NUMERIC, mode=IN},
+                              #{tradeAmount, jdbcType=NUMERIC, mode=IN},
+                              #{fuquan, jdbcType=NUMERIC, mode=IN},
+                              #{originCode, jdbcType=VARCHAR, mode=IN})}  
+	</select>
+	<select id="prcStockKlineWDownload" parameterType="Map" statementType="CALLABLE">  
+    	{call PRC_GP_StockKlineW_DOWNLOAD(#{objectCode, jdbcType=VARCHAR, mode=IN},  
+                              #{periodCode, jdbcType=VARCHAR, mode=IN},
+                              #{priceOpen, jdbcType=NUMERIC, mode=IN},
+                              #{priceHigh, jdbcType=NUMERIC, mode=IN},
+                              #{priceLow, jdbcType=NUMERIC, mode=IN},
+                              #{priceClose, jdbcType=NUMERIC, mode=IN},
+                              #{tradeVolumn, jdbcType=NUMERIC, mode=IN},
+                              #{tradeAmount, jdbcType=NUMERIC, mode=IN},
+                              #{fuquan, jdbcType=NUMERIC, mode=IN},
+                              #{originCode, jdbcType=VARCHAR, mode=IN})}  
+	</select>
+	<select id="prcStockKlineMDownload" parameterType="Map" statementType="CALLABLE">  
+    	{call PRC_GP_StockKlineM_DOWNLOAD(#{objectCode, jdbcType=VARCHAR, mode=IN},  
+                              #{periodCode, jdbcType=VARCHAR, mode=IN},
+                              #{priceOpen, jdbcType=NUMERIC, mode=IN},
+                              #{priceHigh, jdbcType=NUMERIC, mode=IN},
+                              #{priceLow, jdbcType=NUMERIC, mode=IN},
+                              #{priceClose, jdbcType=NUMERIC, mode=IN},
+                              #{tradeVolumn, jdbcType=NUMERIC, mode=IN},
+                              #{tradeAmount, jdbcType=NUMERIC, mode=IN},
+                              #{fuquan, jdbcType=NUMERIC, mode=IN},
+                              #{originCode, jdbcType=VARCHAR, mode=IN})}  
+	</select>
+	<select id="prcStockKline15FDownload" parameterType="Map" statementType="CALLABLE">  
+    	{call PRC_GP_StockKline15F_DOWNLOAD(#{objectCode, jdbcType=VARCHAR, mode=IN},  
+                              #{periodCode, jdbcType=VARCHAR, mode=IN},
+                              #{priceOpen, jdbcType=NUMERIC, mode=IN},
+                              #{priceHigh, jdbcType=NUMERIC, mode=IN},
+                              #{priceLow, jdbcType=NUMERIC, mode=IN},
+                              #{priceClose, jdbcType=NUMERIC, mode=IN},
+                              #{tradeVolumn, jdbcType=NUMERIC, mode=IN},
+                              #{tradeAmount, jdbcType=NUMERIC, mode=IN},
+                              #{fuquan, jdbcType=NUMERIC, mode=IN},
+                              #{originCode, jdbcType=VARCHAR, mode=IN})}  
+	</select>
+	<select id="prcStockKline30FDownload" parameterType="Map" statementType="CALLABLE">  
+    	{call PRC_GP_StockKline30F_DOWNLOAD(#{objectCode, jdbcType=VARCHAR, mode=IN},  
+                              #{periodCode, jdbcType=VARCHAR, mode=IN},
+                              #{priceOpen, jdbcType=NUMERIC, mode=IN},
+                              #{priceHigh, jdbcType=NUMERIC, mode=IN},
+                              #{priceLow, jdbcType=NUMERIC, mode=IN},
+                              #{priceClose, jdbcType=NUMERIC, mode=IN},
+                              #{tradeVolumn, jdbcType=NUMERIC, mode=IN},
+                              #{tradeAmount, jdbcType=NUMERIC, mode=IN},
+                              #{fuquan, jdbcType=NUMERIC, mode=IN},
+                              #{originCode, jdbcType=VARCHAR, mode=IN})}  
+	</select>
+	<select id="prcStockKline60FDownload" parameterType="Map" statementType="CALLABLE">  
+    	{call PRC_GP_StockKline60F_DOWNLOAD(#{objectCode, jdbcType=VARCHAR, mode=IN},  
+                              #{periodCode, jdbcType=VARCHAR, mode=IN},
+                              #{priceOpen, jdbcType=NUMERIC, mode=IN},
+                              #{priceHigh, jdbcType=NUMERIC, mode=IN},
+                              #{priceLow, jdbcType=NUMERIC, mode=IN},
+                              #{priceClose, jdbcType=NUMERIC, mode=IN},
+                              #{tradeVolumn, jdbcType=NUMERIC, mode=IN},
+                              #{tradeAmount, jdbcType=NUMERIC, mode=IN},
+                              #{fuquan, jdbcType=NUMERIC, mode=IN},
+                              #{originCode, jdbcType=VARCHAR, mode=IN})}  
+	</select>
+	<select id="prcClassKlineDDownload" parameterType="Map" statementType="CALLABLE">  
+    	{call PRC_GP_ClassKlineD_DOWNLOAD(#{objectCode, jdbcType=VARCHAR, mode=IN},  
+                              #{periodCode, jdbcType=VARCHAR, mode=IN},
+                              #{priceOpen, jdbcType=NUMERIC, mode=IN},
+                              #{priceHigh, jdbcType=NUMERIC, mode=IN},
+                              #{priceLow, jdbcType=NUMERIC, mode=IN},
+                              #{priceClose, jdbcType=NUMERIC, mode=IN},
+                              #{tradeVolumn, jdbcType=NUMERIC, mode=IN},
+                              #{tradeAmount, jdbcType=NUMERIC, mode=IN},
+                              #{originCode, jdbcType=VARCHAR, mode=IN})} 
+	</select>
+	<select id="prcClassKlineWDownload" parameterType="Map" statementType="CALLABLE">  
+    	{call PRC_GP_ClassKlineW_DOWNLOAD(#{objectCode, jdbcType=VARCHAR, mode=IN},  
+                              #{periodCode, jdbcType=VARCHAR, mode=IN},
+                              #{priceOpen, jdbcType=NUMERIC, mode=IN},
+                              #{priceHigh, jdbcType=NUMERIC, mode=IN},
+                              #{priceLow, jdbcType=NUMERIC, mode=IN},
+                              #{priceClose, jdbcType=NUMERIC, mode=IN},
+                              #{tradeVolumn, jdbcType=NUMERIC, mode=IN},
+                              #{tradeAmount, jdbcType=NUMERIC, mode=IN},
+                              #{originCode, jdbcType=VARCHAR, mode=IN})} 
+	</select>
+	<select id="prcClassKlineMDownload" parameterType="Map" statementType="CALLABLE">  
+    	{call PRC_GP_ClassKlineM_DOWNLOAD(#{objectCode, jdbcType=VARCHAR, mode=IN},  
+                              #{periodCode, jdbcType=VARCHAR, mode=IN},
+                              #{priceOpen, jdbcType=NUMERIC, mode=IN},
+                              #{priceHigh, jdbcType=NUMERIC, mode=IN},
+                              #{priceLow, jdbcType=NUMERIC, mode=IN},
+                              #{priceClose, jdbcType=NUMERIC, mode=IN},
+                              #{tradeVolumn, jdbcType=NUMERIC, mode=IN},
+                              #{tradeAmount, jdbcType=NUMERIC, mode=IN},
+                              #{originCode, jdbcType=VARCHAR, mode=IN})} 
+	</select>
+	<select id="prcClassKline15FDownload" parameterType="Map" statementType="CALLABLE">  
+    	{call PRC_GP_ClassKline15F_DOWNLOAD(#{objectCode, jdbcType=VARCHAR, mode=IN},  
+                              #{periodCode, jdbcType=VARCHAR, mode=IN},
+                              #{priceOpen, jdbcType=NUMERIC, mode=IN},
+                              #{priceHigh, jdbcType=NUMERIC, mode=IN},
+                              #{priceLow, jdbcType=NUMERIC, mode=IN},
+                              #{priceClose, jdbcType=NUMERIC, mode=IN},
+                              #{tradeVolumn, jdbcType=NUMERIC, mode=IN},
+                              #{tradeAmount, jdbcType=NUMERIC, mode=IN},
+                              #{originCode, jdbcType=VARCHAR, mode=IN})} 
+	</select>
+	<select id="prcClassKline30FDownload" parameterType="Map" statementType="CALLABLE">  
+    	{call PRC_GP_ClassKline30F_DOWNLOAD(#{objectCode, jdbcType=VARCHAR, mode=IN},  
+                              #{periodCode, jdbcType=VARCHAR, mode=IN},
+                              #{priceOpen, jdbcType=NUMERIC, mode=IN},
+                              #{priceHigh, jdbcType=NUMERIC, mode=IN},
+                              #{priceLow, jdbcType=NUMERIC, mode=IN},
+                              #{priceClose, jdbcType=NUMERIC, mode=IN},
+                              #{tradeVolumn, jdbcType=NUMERIC, mode=IN},
+                              #{tradeAmount, jdbcType=NUMERIC, mode=IN},
+                              #{originCode, jdbcType=VARCHAR, mode=IN})} 
+	</select>
+	<select id="prcClassKline60FDownload" parameterType="Map" statementType="CALLABLE">  
+    	{call PRC_GP_ClassKline60F_DOWNLOAD(#{objectCode, jdbcType=VARCHAR, mode=IN},  
+                              #{periodCode, jdbcType=VARCHAR, mode=IN},
+                              #{priceOpen, jdbcType=NUMERIC, mode=IN},
+                              #{priceHigh, jdbcType=NUMERIC, mode=IN},
+                              #{priceLow, jdbcType=NUMERIC, mode=IN},
+                              #{priceClose, jdbcType=NUMERIC, mode=IN},
+                              #{tradeVolumn, jdbcType=NUMERIC, mode=IN},
+                              #{tradeAmount, jdbcType=NUMERIC, mode=IN},
+                              #{originCode, jdbcType=VARCHAR, mode=IN})} 
+	</select>
+</mapper>

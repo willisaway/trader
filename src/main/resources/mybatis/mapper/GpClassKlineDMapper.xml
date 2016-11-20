@@ -1,0 +1,1225 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lishao.trader.stock.dao.GpClassKlineDMapper" >
+  <resultMap id="BaseResultMap" type="com.lishao.trader.stock.bean.entity.GpClassKlineD" >
+    <result column="CLASSIFY_CODE" property="classifyCode" jdbcType="VARCHAR" />
+    <result column="PERIOD_CODE" property="periodCode" jdbcType="VARCHAR" />
+    <result column="ROW_ID" property="rowId" jdbcType="VARCHAR" />
+    <result column="SEQUENCE_NO" property="sequenceNo" jdbcType="DECIMAL" />
+    <result column="PRICE_OPEN" property="priceOpen" jdbcType="DECIMAL" />
+    <result column="PRICE_HIGH" property="priceHigh" jdbcType="DECIMAL" />
+    <result column="PRICE_LOW" property="priceLow" jdbcType="DECIMAL" />
+    <result column="PRICE_CLOSE" property="priceClose" jdbcType="DECIMAL" />
+    <result column="PRICE_CLOSE_REF1" property="priceCloseRef1" jdbcType="DECIMAL" />
+    <result column="TRADE_VOLUMN" property="tradeVolumn" jdbcType="DECIMAL" />
+    <result column="TRADE_AMOUNT" property="tradeAmount" jdbcType="DECIMAL" />
+    <result column="AMOUNT_FLOW" property="amountFlow" jdbcType="DECIMAL" />
+    <result column="LARGE_AMOUNT_IN" property="largeAmountIn" jdbcType="DECIMAL" />
+    <result column="LARGE_AMOUNT_OUT" property="largeAmountOut" jdbcType="DECIMAL" />
+    <result column="INC_PER" property="incPer" jdbcType="DECIMAL" />
+    <result column="CLOSE_EMA_5" property="closeEma5" jdbcType="DECIMAL" />
+    <result column="CLOSE_EMA_10" property="closeEma10" jdbcType="DECIMAL" />
+    <result column="CLOSE_EMA_20" property="closeEma20" jdbcType="DECIMAL" />
+    <result column="CLOSE_EMA_30" property="closeEma30" jdbcType="DECIMAL" />
+    <result column="CLOSE_EMA_60" property="closeEma60" jdbcType="DECIMAL" />
+    <result column="CLOSE_EMA_150" property="closeEma150" jdbcType="DECIMAL" />
+    <result column="VOLUMN_EMA_5" property="volumnEma5" jdbcType="DECIMAL" />
+    <result column="VOLUMN_EMA_10" property="volumnEma10" jdbcType="DECIMAL" />
+    <result column="VOLUMN_EMA_20" property="volumnEma20" jdbcType="DECIMAL" />
+    <result column="VOLUMN_EMA_30" property="volumnEma30" jdbcType="DECIMAL" />
+    <result column="VOLUMN_EMA_60" property="volumnEma60" jdbcType="DECIMAL" />
+    <result column="VOLUMN_EMA_150" property="volumnEma150" jdbcType="DECIMAL" />
+    <result column="AMOUNT_EMA_5" property="amountEma5" jdbcType="DECIMAL" />
+    <result column="AMOUNT_EMA_10" property="amountEma10" jdbcType="DECIMAL" />
+    <result column="AMOUNT_EMA_20" property="amountEma20" jdbcType="DECIMAL" />
+    <result column="AMOUNT_EMA_30" property="amountEma30" jdbcType="DECIMAL" />
+    <result column="AMOUNT_EMA_60" property="amountEma60" jdbcType="DECIMAL" />
+    <result column="AMOUNT_EMA_150" property="amountEma150" jdbcType="DECIMAL" />
+    <result column="CLOSE_EMA_6" property="closeEma6" jdbcType="DECIMAL" />
+    <result column="CLOSE_EMA_13" property="closeEma13" jdbcType="DECIMAL" />
+    <result column="CLOSE_EMA_12" property="closeEma12" jdbcType="DECIMAL" />
+    <result column="CLOSE_EMA_26" property="closeEma26" jdbcType="DECIMAL" />
+    <result column="DIF_S" property="difS" jdbcType="DECIMAL" />
+    <result column="DEA_S" property="deaS" jdbcType="DECIMAL" />
+    <result column="DEA_S_ANGLE" property="deaSAngle" jdbcType="DECIMAL" />
+    <result column="DIF_F" property="difF" jdbcType="DECIMAL" />
+    <result column="DEA_F" property="deaF" jdbcType="DECIMAL" />
+    <result column="DEA_F_ANGLE" property="deaFAngle" jdbcType="DECIMAL" />
+    <result column="KDJ_K" property="kdjK" jdbcType="DECIMAL" />
+    <result column="KDJ_D" property="kdjD" jdbcType="DECIMAL" />
+    <result column="KDJ_J" property="kdjJ" jdbcType="DECIMAL" />
+    <result column="TR" property="tr" jdbcType="DECIMAL" />
+    <result column="ATR" property="atr" jdbcType="DECIMAL" />
+    <result column="TREND" property="trend" jdbcType="DECIMAL" />
+    <result column="RISING" property="rising" jdbcType="DECIMAL" />
+    <result column="RAPID_RISING" property="rapidRising" jdbcType="DECIMAL" />
+    <result column="SHAKE" property="shake" jdbcType="DECIMAL" />
+    <result column="SLUMP" property="slump" jdbcType="DECIMAL" />
+    <result column="STATUS" property="status" jdbcType="CHAR" />
+    <result column="PV_SUM_1" property="pvSum1" jdbcType="DECIMAL" />
+    <result column="PV_SUM_5" property="pvSum5" jdbcType="DECIMAL" />
+    <result column="PV_SUM_10" property="pvSum10" jdbcType="DECIMAL" />
+    <result column="PV_SUM_20" property="pvSum20" jdbcType="DECIMAL" />
+    <result column="PV_SUM_30" property="pvSum30" jdbcType="DECIMAL" />
+    <result column="PV_SUM_60" property="pvSum60" jdbcType="DECIMAL" />
+    <result column="STOCKS_COUNT" property="stocksCount" jdbcType="DECIMAL" />
+    <result column="STOCKS_RISING" property="stocksRising" jdbcType="DECIMAL" />
+    <result column="STOCKS_SLUMP" property="stocksSlump" jdbcType="DECIMAL" />
+    <result column="RANKING" property="ranking" jdbcType="DECIMAL" />
+    <result column="TREND_LEVEL" property="trendLevel" jdbcType="DECIMAL" />
+    <result column="SECURITY_LEVEL" property="securityLevel" jdbcType="DECIMAL" />
+    <result column="MA5_PERCENT" property="ma5Percent" jdbcType="DECIMAL" />
+    <result column="MA10_PERCENT" property="ma10Percent" jdbcType="DECIMAL" />
+    <result column="MA20_PERCENT" property="ma20Percent" jdbcType="DECIMAL" />
+    <result column="MA30_PERCENT" property="ma30Percent" jdbcType="DECIMAL" />
+    <result column="MA60_PERCENT" property="ma60Percent" jdbcType="DECIMAL" />
+    <result column="MA150_PERCENT" property="ma150Percent" jdbcType="DECIMAL" />
+    <result column="SELL_AMOUNT1" property="sellAmount1" jdbcType="DECIMAL" />
+    <result column="SELL_AMOUNT2" property="sellAmount2" jdbcType="DECIMAL" />
+    <result column="SELL_AMOUNT3" property="sellAmount3" jdbcType="DECIMAL" />
+    <result column="SELL_AMOUNT4" property="sellAmount4" jdbcType="DECIMAL" />
+    <result column="SELL_AMOUNT5" property="sellAmount5" jdbcType="DECIMAL" />
+    <result column="SELL_AMOUNT6" property="sellAmount6" jdbcType="DECIMAL" />
+    <result column="SELL_AMOUNT7" property="sellAmount7" jdbcType="DECIMAL" />
+    <result column="SELL_AMOUNT8" property="sellAmount8" jdbcType="DECIMAL" />
+    <result column="SELL_AMOUNT9" property="sellAmount9" jdbcType="DECIMAL" />
+    <result column="SELL_AMOUNT10" property="sellAmount10" jdbcType="DECIMAL" />
+    <result column="BUY_AMOUNT1" property="buyAmount1" jdbcType="DECIMAL" />
+    <result column="BUY_AMOUNT2" property="buyAmount2" jdbcType="DECIMAL" />
+    <result column="BUY_AMOUNT3" property="buyAmount3" jdbcType="DECIMAL" />
+    <result column="BUY_AMOUNT4" property="buyAmount4" jdbcType="DECIMAL" />
+    <result column="BUY_AMOUNT5" property="buyAmount5" jdbcType="DECIMAL" />
+    <result column="BUY_AMOUNT6" property="buyAmount6" jdbcType="DECIMAL" />
+    <result column="BUY_AMOUNT7" property="buyAmount7" jdbcType="DECIMAL" />
+    <result column="BUY_AMOUNT8" property="buyAmount8" jdbcType="DECIMAL" />
+    <result column="BUY_AMOUNT9" property="buyAmount9" jdbcType="DECIMAL" />
+    <result column="BUY_AMOUNT10" property="buyAmount10" jdbcType="DECIMAL" />
+    <result column="SELL_AMOUNT" property="sellAmount" jdbcType="DECIMAL" />
+    <result column="BUY_AMOUNT" property="buyAmount" jdbcType="DECIMAL" />
+    <result column="AMOUNT_WEIBI" property="amountWeibi" jdbcType="DECIMAL" />
+    <result column="DELETED_FLAG" property="deletedFlag" jdbcType="CHAR" />
+    <result column="ORIGIN_CODE" property="originCode" jdbcType="VARCHAR" />
+    <result column="CREATED_DATE" property="createdDate" jdbcType="TIMESTAMP" />
+    <result column="LAST_UPD_DATE" property="lastUpdDate" jdbcType="TIMESTAMP" />
+    <result column="MODIFICATION_NUM" property="modificationNum" jdbcType="DECIMAL" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    CLASSIFY_CODE, PERIOD_CODE, ROW_ID, SEQUENCE_NO, PRICE_OPEN, PRICE_HIGH, PRICE_LOW, 
+    PRICE_CLOSE, PRICE_CLOSE_REF1, TRADE_VOLUMN, TRADE_AMOUNT, AMOUNT_FLOW, LARGE_AMOUNT_IN,LARGE_AMOUNT_OUT,
+    INC_PER, CLOSE_EMA_5, CLOSE_EMA_10, CLOSE_EMA_20, CLOSE_EMA_30, CLOSE_EMA_60, CLOSE_EMA_150, 
+    VOLUMN_EMA_5, VOLUMN_EMA_10, VOLUMN_EMA_20, VOLUMN_EMA_30, VOLUMN_EMA_60, VOLUMN_EMA_150, 
+    AMOUNT_EMA_5, AMOUNT_EMA_10, AMOUNT_EMA_20, AMOUNT_EMA_30, AMOUNT_EMA_60, AMOUNT_EMA_150, 
+    CLOSE_EMA_6, CLOSE_EMA_13, CLOSE_EMA_12, CLOSE_EMA_26, DIF_S, DEA_S, DEA_S_ANGLE, 
+    DIF_F, DEA_F, DEA_F_ANGLE, KDJ_K, KDJ_D, KDJ_J, TR, ATR, TREND, RISING, RAPID_RISING, 
+    SHAKE, SLUMP, STATUS, PV_SUM_1, PV_SUM_5, PV_SUM_10, PV_SUM_20, PV_SUM_30, PV_SUM_60, 
+    STOCKS_COUNT, STOCKS_RISING, STOCKS_SLUMP, RANKING, TREND_LEVEL, SECURITY_LEVEL, 
+    MA5_PERCENT, MA10_PERCENT, MA20_PERCENT, MA30_PERCENT, MA60_PERCENT, MA150_PERCENT, 
+    SELL_AMOUNT1, SELL_AMOUNT2, SELL_AMOUNT3, SELL_AMOUNT4, SELL_AMOUNT5, SELL_AMOUNT6, 
+    SELL_AMOUNT7, SELL_AMOUNT8, SELL_AMOUNT9, SELL_AMOUNT10, BUY_AMOUNT1, BUY_AMOUNT2, 
+    BUY_AMOUNT3, BUY_AMOUNT4, BUY_AMOUNT5, BUY_AMOUNT6, BUY_AMOUNT7, BUY_AMOUNT8, BUY_AMOUNT9, 
+    BUY_AMOUNT10, SELL_AMOUNT, BUY_AMOUNT, AMOUNT_WEIBI, DELETED_FLAG, ORIGIN_CODE, CREATED_DATE, 
+    LAST_UPD_DATE, MODIFICATION_NUM
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.lishao.trader.stock.bean.entity.GpClassKlineD" >
+    select 
+    <include refid="Base_Column_List" />
+    from GP_CLASS_KLINE_D
+    where CLASSIFY_CODE = #{classifyCode,jdbcType=VARCHAR}
+      and PERIOD_CODE = #{periodCode,jdbcType=VARCHAR}
+  </select>
+  <select id="selectLastClassKlineDByClassifyCode" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from GP_CLASS_KLINE_D
+    where DELETED_FLAG='0' and CLASSIFY_CODE = #{classifyCode,jdbcType=VARCHAR} 
+    AND SEQUENCE_NO = (SELECT MAX(SEQUENCE_NO) 
+                            FROM GP_CLASS_KLINE_D 
+                            WHERE DELETED_FLAG='0' AND ORIGIN_CODE='H'
+                            AND CLASSIFY_CODE = #{classifyCode,jdbcType=VARCHAR}
+                       )
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.lishao.trader.stock.bean.entity.GpClassKlineD" >
+    delete from GP_CLASS_KLINE_D
+    where CLASSIFY_CODE = #{classifyCode,jdbcType=VARCHAR}
+      and PERIOD_CODE = #{periodCode,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.lishao.trader.stock.bean.entity.GpClassKlineD" >
+    insert into GP_CLASS_KLINE_D (CLASSIFY_CODE, PERIOD_CODE, ROW_ID, 
+      SEQUENCE_NO, PRICE_OPEN, PRICE_HIGH, 
+      PRICE_LOW, PRICE_CLOSE, PRICE_CLOSE_REF1, 
+      TRADE_VOLUMN, TRADE_AMOUNT, AMOUNT_FLOW, LARGE_AMOUNT_IN,LARGE_AMOUNT_OUT,
+      INC_PER, CLOSE_EMA_5, CLOSE_EMA_10, 
+      CLOSE_EMA_20, CLOSE_EMA_30, CLOSE_EMA_60, 
+      CLOSE_EMA_150, VOLUMN_EMA_5, VOLUMN_EMA_10, 
+      VOLUMN_EMA_20, VOLUMN_EMA_30, VOLUMN_EMA_60, 
+      VOLUMN_EMA_150, AMOUNT_EMA_5, AMOUNT_EMA_10, 
+      AMOUNT_EMA_20, AMOUNT_EMA_30, AMOUNT_EMA_60, 
+      AMOUNT_EMA_150, CLOSE_EMA_6, CLOSE_EMA_13, 
+      CLOSE_EMA_12, CLOSE_EMA_26, DIF_S, 
+      DEA_S, DEA_S_ANGLE, DIF_F, 
+      DEA_F, DEA_F_ANGLE, KDJ_K, 
+      KDJ_D, KDJ_J, TR, ATR, 
+      TREND, RISING, RAPID_RISING, 
+      SHAKE, SLUMP, STATUS, 
+      PV_SUM_1, PV_SUM_5, PV_SUM_10, 
+      PV_SUM_20, PV_SUM_30, PV_SUM_60, 
+      STOCKS_COUNT, STOCKS_RISING, STOCKS_SLUMP, 
+      RANKING, TREND_LEVEL, SECURITY_LEVEL, 
+      MA5_PERCENT, MA10_PERCENT, MA20_PERCENT, 
+      MA30_PERCENT, MA60_PERCENT, MA150_PERCENT, 
+      SELL_AMOUNT1, SELL_AMOUNT2, SELL_AMOUNT3, 
+      SELL_AMOUNT4, SELL_AMOUNT5, SELL_AMOUNT6, 
+      SELL_AMOUNT7, SELL_AMOUNT8, SELL_AMOUNT9, 
+      SELL_AMOUNT10, BUY_AMOUNT1, BUY_AMOUNT2, 
+      BUY_AMOUNT3, BUY_AMOUNT4, BUY_AMOUNT5, 
+      BUY_AMOUNT6, BUY_AMOUNT7, BUY_AMOUNT8, 
+      BUY_AMOUNT9, BUY_AMOUNT10, SELL_AMOUNT, 
+      BUY_AMOUNT, AMOUNT_WEIBI, DELETED_FLAG, 
+      ORIGIN_CODE, CREATED_DATE, LAST_UPD_DATE, 
+      MODIFICATION_NUM)
+    values (#{classifyCode,jdbcType=VARCHAR}, #{periodCode,jdbcType=VARCHAR}, #{rowId,jdbcType=VARCHAR}, 
+      #{sequenceNo,jdbcType=DECIMAL}, #{priceOpen,jdbcType=DECIMAL}, #{priceHigh,jdbcType=DECIMAL}, 
+      #{priceLow,jdbcType=DECIMAL}, #{priceClose,jdbcType=DECIMAL}, #{priceCloseRef1,jdbcType=DECIMAL}, 
+      #{tradeVolumn,jdbcType=DECIMAL}, #{tradeAmount,jdbcType=DECIMAL}, #{amountFlow,jdbcType=DECIMAL}, #{largeAmountIn,jdbcType=DECIMAL},#{largeAmountOut,jdbcType=DECIMAL},
+      #{incPer,jdbcType=DECIMAL}, #{closeEma5,jdbcType=DECIMAL}, #{closeEma10,jdbcType=DECIMAL}, 
+      #{closeEma20,jdbcType=DECIMAL}, #{closeEma30,jdbcType=DECIMAL}, #{closeEma60,jdbcType=DECIMAL}, 
+      #{closeEma150,jdbcType=DECIMAL}, #{volumnEma5,jdbcType=DECIMAL}, #{volumnEma10,jdbcType=DECIMAL}, 
+      #{volumnEma20,jdbcType=DECIMAL}, #{volumnEma30,jdbcType=DECIMAL}, #{volumnEma60,jdbcType=DECIMAL}, 
+      #{volumnEma150,jdbcType=DECIMAL}, #{amountEma5,jdbcType=DECIMAL}, #{amountEma10,jdbcType=DECIMAL}, 
+      #{amountEma20,jdbcType=DECIMAL}, #{amountEma30,jdbcType=DECIMAL}, #{amountEma60,jdbcType=DECIMAL}, 
+      #{amountEma150,jdbcType=DECIMAL}, #{closeEma6,jdbcType=DECIMAL}, #{closeEma13,jdbcType=DECIMAL}, 
+      #{closeEma12,jdbcType=DECIMAL}, #{closeEma26,jdbcType=DECIMAL}, #{difS,jdbcType=DECIMAL}, 
+      #{deaS,jdbcType=DECIMAL}, #{deaSAngle,jdbcType=DECIMAL}, #{difF,jdbcType=DECIMAL}, 
+      #{deaF,jdbcType=DECIMAL}, #{deaFAngle,jdbcType=DECIMAL}, #{kdjK,jdbcType=DECIMAL}, 
+      #{kdjD,jdbcType=DECIMAL}, #{kdjJ,jdbcType=DECIMAL}, #{tr,jdbcType=DECIMAL}, #{atr,jdbcType=DECIMAL}, 
+      #{trend,jdbcType=DECIMAL}, #{rising,jdbcType=DECIMAL}, #{rapidRising,jdbcType=DECIMAL}, 
+      #{shake,jdbcType=DECIMAL}, #{slump,jdbcType=DECIMAL}, #{status,jdbcType=CHAR}, 
+      #{pvSum1,jdbcType=DECIMAL}, #{pvSum5,jdbcType=DECIMAL}, #{pvSum10,jdbcType=DECIMAL}, 
+      #{pvSum20,jdbcType=DECIMAL}, #{pvSum30,jdbcType=DECIMAL}, #{pvSum60,jdbcType=DECIMAL}, 
+      #{stocksCount,jdbcType=DECIMAL}, #{stocksRising,jdbcType=DECIMAL}, #{stocksSlump,jdbcType=DECIMAL}, 
+      #{ranking,jdbcType=DECIMAL}, #{trendLevel,jdbcType=DECIMAL}, #{securityLevel,jdbcType=DECIMAL}, 
+      #{ma5Percent,jdbcType=DECIMAL}, #{ma10Percent,jdbcType=DECIMAL}, #{ma20Percent,jdbcType=DECIMAL}, 
+      #{ma30Percent,jdbcType=DECIMAL}, #{ma60Percent,jdbcType=DECIMAL}, #{ma150Percent,jdbcType=DECIMAL}, 
+      #{sellAmount1,jdbcType=DECIMAL}, #{sellAmount2,jdbcType=DECIMAL}, #{sellAmount3,jdbcType=DECIMAL}, 
+      #{sellAmount4,jdbcType=DECIMAL}, #{sellAmount5,jdbcType=DECIMAL}, #{sellAmount6,jdbcType=DECIMAL}, 
+      #{sellAmount7,jdbcType=DECIMAL}, #{sellAmount8,jdbcType=DECIMAL}, #{sellAmount9,jdbcType=DECIMAL}, 
+      #{sellAmount10,jdbcType=DECIMAL}, #{buyAmount1,jdbcType=DECIMAL}, #{buyAmount2,jdbcType=DECIMAL}, 
+      #{buyAmount3,jdbcType=DECIMAL}, #{buyAmount4,jdbcType=DECIMAL}, #{buyAmount5,jdbcType=DECIMAL}, 
+      #{buyAmount6,jdbcType=DECIMAL}, #{buyAmount7,jdbcType=DECIMAL}, #{buyAmount8,jdbcType=DECIMAL}, 
+      #{buyAmount9,jdbcType=DECIMAL}, #{buyAmount10,jdbcType=DECIMAL}, #{sellAmount,jdbcType=DECIMAL}, 
+      #{buyAmount,jdbcType=DECIMAL}, #{amountWeibi,jdbcType=DECIMAL}, #{deletedFlag,jdbcType=CHAR}, 
+      #{originCode,jdbcType=VARCHAR}, #{createdDate,jdbcType=TIMESTAMP}, #{lastUpdDate,jdbcType=TIMESTAMP}, 
+      #{modificationNum,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="com.lishao.trader.stock.bean.entity.GpClassKlineD" >
+    insert into GP_CLASS_KLINE_D
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="classifyCode != null" >
+        CLASSIFY_CODE,
+      </if>
+      <if test="periodCode != null" >
+        PERIOD_CODE,
+      </if>
+      <if test="rowId != null" >
+        ROW_ID,
+      </if>
+      <if test="sequenceNo != null" >
+        SEQUENCE_NO,
+      </if>
+      <if test="priceOpen != null" >
+        PRICE_OPEN,
+      </if>
+      <if test="priceHigh != null" >
+        PRICE_HIGH,
+      </if>
+      <if test="priceLow != null" >
+        PRICE_LOW,
+      </if>
+      <if test="priceClose != null" >
+        PRICE_CLOSE,
+      </if>
+      <if test="priceCloseRef1 != null" >
+        PRICE_CLOSE_REF1,
+      </if>
+      <if test="tradeVolumn != null" >
+        TRADE_VOLUMN,
+      </if>
+      <if test="tradeAmount != null" >
+        TRADE_AMOUNT,
+      </if>
+      <if test="amountFlow != null" >
+        AMOUNT_FLOW,
+      </if>
+      <if test="largeAmountIn != null" >
+        LARGE_AMOUNT_IN,
+      </if>
+      <if test="largeAmountOut != null" >
+        LARGE_AMOUNT_OUT,
+      </if>
+      <if test="incPer != null" >
+        INC_PER,
+      </if>
+      <if test="closeEma5 != null" >
+        CLOSE_EMA_5,
+      </if>
+      <if test="closeEma10 != null" >
+        CLOSE_EMA_10,
+      </if>
+      <if test="closeEma20 != null" >
+        CLOSE_EMA_20,
+      </if>
+      <if test="closeEma30 != null" >
+        CLOSE_EMA_30,
+      </if>
+      <if test="closeEma60 != null" >
+        CLOSE_EMA_60,
+      </if>
+      <if test="closeEma150 != null" >
+        CLOSE_EMA_150,
+      </if>
+      <if test="volumnEma5 != null" >
+        VOLUMN_EMA_5,
+      </if>
+      <if test="volumnEma10 != null" >
+        VOLUMN_EMA_10,
+      </if>
+      <if test="volumnEma20 != null" >
+        VOLUMN_EMA_20,
+      </if>
+      <if test="volumnEma30 != null" >
+        VOLUMN_EMA_30,
+      </if>
+      <if test="volumnEma60 != null" >
+        VOLUMN_EMA_60,
+      </if>
+      <if test="volumnEma150 != null" >
+        VOLUMN_EMA_150,
+      </if>
+      <if test="amountEma5 != null" >
+        AMOUNT_EMA_5,
+      </if>
+      <if test="amountEma10 != null" >
+        AMOUNT_EMA_10,
+      </if>
+      <if test="amountEma20 != null" >
+        AMOUNT_EMA_20,
+      </if>
+      <if test="amountEma30 != null" >
+        AMOUNT_EMA_30,
+      </if>
+      <if test="amountEma60 != null" >
+        AMOUNT_EMA_60,
+      </if>
+      <if test="amountEma150 != null" >
+        AMOUNT_EMA_150,
+      </if>
+      <if test="closeEma6 != null" >
+        CLOSE_EMA_6,
+      </if>
+      <if test="closeEma13 != null" >
+        CLOSE_EMA_13,
+      </if>
+      <if test="closeEma12 != null" >
+        CLOSE_EMA_12,
+      </if>
+      <if test="closeEma26 != null" >
+        CLOSE_EMA_26,
+      </if>
+      <if test="difS != null" >
+        DIF_S,
+      </if>
+      <if test="deaS != null" >
+        DEA_S,
+      </if>
+      <if test="deaSAngle != null" >
+        DEA_S_ANGLE,
+      </if>
+      <if test="difF != null" >
+        DIF_F,
+      </if>
+      <if test="deaF != null" >
+        DEA_F,
+      </if>
+      <if test="deaFAngle != null" >
+        DEA_F_ANGLE,
+      </if>
+      <if test="kdjK != null" >
+        KDJ_K,
+      </if>
+      <if test="kdjD != null" >
+        KDJ_D,
+      </if>
+      <if test="kdjJ != null" >
+        KDJ_J,
+      </if>
+      <if test="tr != null" >
+        TR,
+      </if>
+      <if test="atr != null" >
+        ATR,
+      </if>
+      <if test="trend != null" >
+        TREND,
+      </if>
+      <if test="rising != null" >
+        RISING,
+      </if>
+      <if test="rapidRising != null" >
+        RAPID_RISING,
+      </if>
+      <if test="shake != null" >
+        SHAKE,
+      </if>
+      <if test="slump != null" >
+        SLUMP,
+      </if>
+      <if test="status != null" >
+        STATUS,
+      </if>
+      <if test="pvSum1 != null" >
+        PV_SUM_1,
+      </if>
+      <if test="pvSum5 != null" >
+        PV_SUM_5,
+      </if>
+      <if test="pvSum10 != null" >
+        PV_SUM_10,
+      </if>
+      <if test="pvSum20 != null" >
+        PV_SUM_20,
+      </if>
+      <if test="pvSum30 != null" >
+        PV_SUM_30,
+      </if>
+      <if test="pvSum60 != null" >
+        PV_SUM_60,
+      </if>
+      <if test="stocksCount != null" >
+        STOCKS_COUNT,
+      </if>
+      <if test="stocksRising != null" >
+        STOCKS_RISING,
+      </if>
+      <if test="stocksSlump != null" >
+        STOCKS_SLUMP,
+      </if>
+      <if test="ranking != null" >
+        RANKING,
+      </if>
+      <if test="trendLevel != null" >
+        TREND_LEVEL,
+      </if>
+      <if test="securityLevel != null" >
+        SECURITY_LEVEL,
+      </if>
+      <if test="ma5Percent != null" >
+        MA5_PERCENT,
+      </if>
+      <if test="ma10Percent != null" >
+        MA10_PERCENT,
+      </if>
+      <if test="ma20Percent != null" >
+        MA20_PERCENT,
+      </if>
+      <if test="ma30Percent != null" >
+        MA30_PERCENT,
+      </if>
+      <if test="ma60Percent != null" >
+        MA60_PERCENT,
+      </if>
+      <if test="ma150Percent != null" >
+        MA150_PERCENT,
+      </if>
+      <if test="sellAmount1 != null" >
+        SELL_AMOUNT1,
+      </if>
+      <if test="sellAmount2 != null" >
+        SELL_AMOUNT2,
+      </if>
+      <if test="sellAmount3 != null" >
+        SELL_AMOUNT3,
+      </if>
+      <if test="sellAmount4 != null" >
+        SELL_AMOUNT4,
+      </if>
+      <if test="sellAmount5 != null" >
+        SELL_AMOUNT5,
+      </if>
+      <if test="sellAmount6 != null" >
+        SELL_AMOUNT6,
+      </if>
+      <if test="sellAmount7 != null" >
+        SELL_AMOUNT7,
+      </if>
+      <if test="sellAmount8 != null" >
+        SELL_AMOUNT8,
+      </if>
+      <if test="sellAmount9 != null" >
+        SELL_AMOUNT9,
+      </if>
+      <if test="sellAmount10 != null" >
+        SELL_AMOUNT10,
+      </if>
+      <if test="buyAmount1 != null" >
+        BUY_AMOUNT1,
+      </if>
+      <if test="buyAmount2 != null" >
+        BUY_AMOUNT2,
+      </if>
+      <if test="buyAmount3 != null" >
+        BUY_AMOUNT3,
+      </if>
+      <if test="buyAmount4 != null" >
+        BUY_AMOUNT4,
+      </if>
+      <if test="buyAmount5 != null" >
+        BUY_AMOUNT5,
+      </if>
+      <if test="buyAmount6 != null" >
+        BUY_AMOUNT6,
+      </if>
+      <if test="buyAmount7 != null" >
+        BUY_AMOUNT7,
+      </if>
+      <if test="buyAmount8 != null" >
+        BUY_AMOUNT8,
+      </if>
+      <if test="buyAmount9 != null" >
+        BUY_AMOUNT9,
+      </if>
+      <if test="buyAmount10 != null" >
+        BUY_AMOUNT10,
+      </if>
+      <if test="sellAmount != null" >
+        SELL_AMOUNT,
+      </if>
+      <if test="buyAmount != null" >
+        BUY_AMOUNT,
+      </if>
+      <if test="amountWeibi != null" >
+        AMOUNT_WEIBI,
+      </if>
+      <if test="deletedFlag != null" >
+        DELETED_FLAG,
+      </if>
+      <if test="originCode != null" >
+        ORIGIN_CODE,
+      </if>
+      <if test="createdDate != null" >
+        CREATED_DATE,
+      </if>
+      <if test="lastUpdDate != null" >
+        LAST_UPD_DATE,
+      </if>
+      <if test="modificationNum != null" >
+        MODIFICATION_NUM,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="classifyCode != null" >
+        #{classifyCode,jdbcType=VARCHAR},
+      </if>
+      <if test="periodCode != null" >
+        #{periodCode,jdbcType=VARCHAR},
+      </if>
+      <if test="rowId != null" >
+        #{rowId,jdbcType=VARCHAR},
+      </if>
+      <if test="sequenceNo != null" >
+        #{sequenceNo,jdbcType=DECIMAL},
+      </if>
+      <if test="priceOpen != null" >
+        #{priceOpen,jdbcType=DECIMAL},
+      </if>
+      <if test="priceHigh != null" >
+        #{priceHigh,jdbcType=DECIMAL},
+      </if>
+      <if test="priceLow != null" >
+        #{priceLow,jdbcType=DECIMAL},
+      </if>
+      <if test="priceClose != null" >
+        #{priceClose,jdbcType=DECIMAL},
+      </if>
+      <if test="priceCloseRef1 != null" >
+        #{priceCloseRef1,jdbcType=DECIMAL},
+      </if>
+      <if test="tradeVolumn != null" >
+        #{tradeVolumn,jdbcType=DECIMAL},
+      </if>
+      <if test="tradeAmount != null" >
+        #{tradeAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="amountFlow != null" >
+        #{amountFlow,jdbcType=DECIMAL},
+      </if>
+      <if test="largeAmountIn != null" >
+        #{largeAmountIn,jdbcType=DECIMAL},
+      </if>
+      <if test="largeAmountOut != null" >
+        #{largeAmountOut,jdbcType=DECIMAL},
+      </if>
+      <if test="incPer != null" >
+        #{incPer,jdbcType=DECIMAL},
+      </if>
+      <if test="closeEma5 != null" >
+        #{closeEma5,jdbcType=DECIMAL},
+      </if>
+      <if test="closeEma10 != null" >
+        #{closeEma10,jdbcType=DECIMAL},
+      </if>
+      <if test="closeEma20 != null" >
+        #{closeEma20,jdbcType=DECIMAL},
+      </if>
+      <if test="closeEma30 != null" >
+        #{closeEma30,jdbcType=DECIMAL},
+      </if>
+      <if test="closeEma60 != null" >
+        #{closeEma60,jdbcType=DECIMAL},
+      </if>
+      <if test="closeEma150 != null" >
+        #{closeEma150,jdbcType=DECIMAL},
+      </if>
+      <if test="volumnEma5 != null" >
+        #{volumnEma5,jdbcType=DECIMAL},
+      </if>
+      <if test="volumnEma10 != null" >
+        #{volumnEma10,jdbcType=DECIMAL},
+      </if>
+      <if test="volumnEma20 != null" >
+        #{volumnEma20,jdbcType=DECIMAL},
+      </if>
+      <if test="volumnEma30 != null" >
+        #{volumnEma30,jdbcType=DECIMAL},
+      </if>
+      <if test="volumnEma60 != null" >
+        #{volumnEma60,jdbcType=DECIMAL},
+      </if>
+      <if test="volumnEma150 != null" >
+        #{volumnEma150,jdbcType=DECIMAL},
+      </if>
+      <if test="amountEma5 != null" >
+        #{amountEma5,jdbcType=DECIMAL},
+      </if>
+      <if test="amountEma10 != null" >
+        #{amountEma10,jdbcType=DECIMAL},
+      </if>
+      <if test="amountEma20 != null" >
+        #{amountEma20,jdbcType=DECIMAL},
+      </if>
+      <if test="amountEma30 != null" >
+        #{amountEma30,jdbcType=DECIMAL},
+      </if>
+      <if test="amountEma60 != null" >
+        #{amountEma60,jdbcType=DECIMAL},
+      </if>
+      <if test="amountEma150 != null" >
+        #{amountEma150,jdbcType=DECIMAL},
+      </if>
+      <if test="closeEma6 != null" >
+        #{closeEma6,jdbcType=DECIMAL},
+      </if>
+      <if test="closeEma13 != null" >
+        #{closeEma13,jdbcType=DECIMAL},
+      </if>
+      <if test="closeEma12 != null" >
+        #{closeEma12,jdbcType=DECIMAL},
+      </if>
+      <if test="closeEma26 != null" >
+        #{closeEma26,jdbcType=DECIMAL},
+      </if>
+      <if test="difS != null" >
+        #{difS,jdbcType=DECIMAL},
+      </if>
+      <if test="deaS != null" >
+        #{deaS,jdbcType=DECIMAL},
+      </if>
+      <if test="deaSAngle != null" >
+        #{deaSAngle,jdbcType=DECIMAL},
+      </if>
+      <if test="difF != null" >
+        #{difF,jdbcType=DECIMAL},
+      </if>
+      <if test="deaF != null" >
+        #{deaF,jdbcType=DECIMAL},
+      </if>
+      <if test="deaFAngle != null" >
+        #{deaFAngle,jdbcType=DECIMAL},
+      </if>
+      <if test="kdjK != null" >
+        #{kdjK,jdbcType=DECIMAL},
+      </if>
+      <if test="kdjD != null" >
+        #{kdjD,jdbcType=DECIMAL},
+      </if>
+      <if test="kdjJ != null" >
+        #{kdjJ,jdbcType=DECIMAL},
+      </if>
+      <if test="tr != null" >
+        #{tr,jdbcType=DECIMAL},
+      </if>
+      <if test="atr != null" >
+        #{atr,jdbcType=DECIMAL},
+      </if>
+      <if test="trend != null" >
+        #{trend,jdbcType=DECIMAL},
+      </if>
+      <if test="rising != null" >
+        #{rising,jdbcType=DECIMAL},
+      </if>
+      <if test="rapidRising != null" >
+        #{rapidRising,jdbcType=DECIMAL},
+      </if>
+      <if test="shake != null" >
+        #{shake,jdbcType=DECIMAL},
+      </if>
+      <if test="slump != null" >
+        #{slump,jdbcType=DECIMAL},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=CHAR},
+      </if>
+      <if test="pvSum1 != null" >
+        #{pvSum1,jdbcType=DECIMAL},
+      </if>
+      <if test="pvSum5 != null" >
+        #{pvSum5,jdbcType=DECIMAL},
+      </if>
+      <if test="pvSum10 != null" >
+        #{pvSum10,jdbcType=DECIMAL},
+      </if>
+      <if test="pvSum20 != null" >
+        #{pvSum20,jdbcType=DECIMAL},
+      </if>
+      <if test="pvSum30 != null" >
+        #{pvSum30,jdbcType=DECIMAL},
+      </if>
+      <if test="pvSum60 != null" >
+        #{pvSum60,jdbcType=DECIMAL},
+      </if>
+      <if test="stocksCount != null" >
+        #{stocksCount,jdbcType=DECIMAL},
+      </if>
+      <if test="stocksRising != null" >
+        #{stocksRising,jdbcType=DECIMAL},
+      </if>
+      <if test="stocksSlump != null" >
+        #{stocksSlump,jdbcType=DECIMAL},
+      </if>
+      <if test="ranking != null" >
+        #{ranking,jdbcType=DECIMAL},
+      </if>
+      <if test="trendLevel != null" >
+        #{trendLevel,jdbcType=DECIMAL},
+      </if>
+      <if test="securityLevel != null" >
+        #{securityLevel,jdbcType=DECIMAL},
+      </if>
+      <if test="ma5Percent != null" >
+        #{ma5Percent,jdbcType=DECIMAL},
+      </if>
+      <if test="ma10Percent != null" >
+        #{ma10Percent,jdbcType=DECIMAL},
+      </if>
+      <if test="ma20Percent != null" >
+        #{ma20Percent,jdbcType=DECIMAL},
+      </if>
+      <if test="ma30Percent != null" >
+        #{ma30Percent,jdbcType=DECIMAL},
+      </if>
+      <if test="ma60Percent != null" >
+        #{ma60Percent,jdbcType=DECIMAL},
+      </if>
+      <if test="ma150Percent != null" >
+        #{ma150Percent,jdbcType=DECIMAL},
+      </if>
+      <if test="sellAmount1 != null" >
+        #{sellAmount1,jdbcType=DECIMAL},
+      </if>
+      <if test="sellAmount2 != null" >
+        #{sellAmount2,jdbcType=DECIMAL},
+      </if>
+      <if test="sellAmount3 != null" >
+        #{sellAmount3,jdbcType=DECIMAL},
+      </if>
+      <if test="sellAmount4 != null" >
+        #{sellAmount4,jdbcType=DECIMAL},
+      </if>
+      <if test="sellAmount5 != null" >
+        #{sellAmount5,jdbcType=DECIMAL},
+      </if>
+      <if test="sellAmount6 != null" >
+        #{sellAmount6,jdbcType=DECIMAL},
+      </if>
+      <if test="sellAmount7 != null" >
+        #{sellAmount7,jdbcType=DECIMAL},
+      </if>
+      <if test="sellAmount8 != null" >
+        #{sellAmount8,jdbcType=DECIMAL},
+      </if>
+      <if test="sellAmount9 != null" >
+        #{sellAmount9,jdbcType=DECIMAL},
+      </if>
+      <if test="sellAmount10 != null" >
+        #{sellAmount10,jdbcType=DECIMAL},
+      </if>
+      <if test="buyAmount1 != null" >
+        #{buyAmount1,jdbcType=DECIMAL},
+      </if>
+      <if test="buyAmount2 != null" >
+        #{buyAmount2,jdbcType=DECIMAL},
+      </if>
+      <if test="buyAmount3 != null" >
+        #{buyAmount3,jdbcType=DECIMAL},
+      </if>
+      <if test="buyAmount4 != null" >
+        #{buyAmount4,jdbcType=DECIMAL},
+      </if>
+      <if test="buyAmount5 != null" >
+        #{buyAmount5,jdbcType=DECIMAL},
+      </if>
+      <if test="buyAmount6 != null" >
+        #{buyAmount6,jdbcType=DECIMAL},
+      </if>
+      <if test="buyAmount7 != null" >
+        #{buyAmount7,jdbcType=DECIMAL},
+      </if>
+      <if test="buyAmount8 != null" >
+        #{buyAmount8,jdbcType=DECIMAL},
+      </if>
+      <if test="buyAmount9 != null" >
+        #{buyAmount9,jdbcType=DECIMAL},
+      </if>
+      <if test="buyAmount10 != null" >
+        #{buyAmount10,jdbcType=DECIMAL},
+      </if>
+      <if test="sellAmount != null" >
+        #{sellAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="buyAmount != null" >
+        #{buyAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="amountWeibi != null" >
+        #{amountWeibi,jdbcType=DECIMAL},
+      </if>
+      <if test="deletedFlag != null" >
+        #{deletedFlag,jdbcType=CHAR},
+      </if>
+      <if test="originCode != null" >
+        #{originCode,jdbcType=VARCHAR},
+      </if>
+      <if test="createdDate != null" >
+        #{createdDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastUpdDate != null" >
+        #{lastUpdDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modificationNum != null" >
+        #{modificationNum,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.lishao.trader.stock.bean.entity.GpClassKlineD" >
+    update GP_CLASS_KLINE_D
+    <set >
+      <if test="rowId != null" >
+        ROW_ID = #{rowId,jdbcType=VARCHAR},
+      </if>
+      <if test="sequenceNo != null" >
+        SEQUENCE_NO = #{sequenceNo,jdbcType=DECIMAL},
+      </if>
+      <if test="priceOpen != null" >
+        PRICE_OPEN = #{priceOpen,jdbcType=DECIMAL},
+      </if>
+      <if test="priceHigh != null" >
+        PRICE_HIGH = #{priceHigh,jdbcType=DECIMAL},
+      </if>
+      <if test="priceLow != null" >
+        PRICE_LOW = #{priceLow,jdbcType=DECIMAL},
+      </if>
+      <if test="priceClose != null" >
+        PRICE_CLOSE = #{priceClose,jdbcType=DECIMAL},
+      </if>
+      <if test="priceCloseRef1 != null" >
+        PRICE_CLOSE_REF1 = #{priceCloseRef1,jdbcType=DECIMAL},
+      </if>
+      <if test="tradeVolumn != null" >
+        TRADE_VOLUMN = #{tradeVolumn,jdbcType=DECIMAL},
+      </if>
+      <if test="tradeAmount != null" >
+        TRADE_AMOUNT = #{tradeAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="amountFlow != null" >
+        AMOUNT_FLOW = #{amountFlow,jdbcType=DECIMAL},
+      </if>
+      <if test="largeAmountIn != null" >
+        LARGE_AMOUNT_IN = #{largeAmountIn,jdbcType=DECIMAL},
+      </if>
+      <if test="largeAmountOut != null" >
+        LARGE_AMOUNT_OUT = #{largeAmountOut,jdbcType=DECIMAL},
+      </if>
+      <if test="incPer != null" >
+        INC_PER = #{incPer,jdbcType=DECIMAL},
+      </if>
+      <if test="closeEma5 != null" >
+        CLOSE_EMA_5 = #{closeEma5,jdbcType=DECIMAL},
+      </if>
+      <if test="closeEma10 != null" >
+        CLOSE_EMA_10 = #{closeEma10,jdbcType=DECIMAL},
+      </if>
+      <if test="closeEma20 != null" >
+        CLOSE_EMA_20 = #{closeEma20,jdbcType=DECIMAL},
+      </if>
+      <if test="closeEma30 != null" >
+        CLOSE_EMA_30 = #{closeEma30,jdbcType=DECIMAL},
+      </if>
+      <if test="closeEma60 != null" >
+        CLOSE_EMA_60 = #{closeEma60,jdbcType=DECIMAL},
+      </if>
+      <if test="closeEma150 != null" >
+        CLOSE_EMA_150 = #{closeEma150,jdbcType=DECIMAL},
+      </if>
+      <if test="volumnEma5 != null" >
+        VOLUMN_EMA_5 = #{volumnEma5,jdbcType=DECIMAL},
+      </if>
+      <if test="volumnEma10 != null" >
+        VOLUMN_EMA_10 = #{volumnEma10,jdbcType=DECIMAL},
+      </if>
+      <if test="volumnEma20 != null" >
+        VOLUMN_EMA_20 = #{volumnEma20,jdbcType=DECIMAL},
+      </if>
+      <if test="volumnEma30 != null" >
+        VOLUMN_EMA_30 = #{volumnEma30,jdbcType=DECIMAL},
+      </if>
+      <if test="volumnEma60 != null" >
+        VOLUMN_EMA_60 = #{volumnEma60,jdbcType=DECIMAL},
+      </if>
+      <if test="volumnEma150 != null" >
+        VOLUMN_EMA_150 = #{volumnEma150,jdbcType=DECIMAL},
+      </if>
+      <if test="amountEma5 != null" >
+        AMOUNT_EMA_5 = #{amountEma5,jdbcType=DECIMAL},
+      </if>
+      <if test="amountEma10 != null" >
+        AMOUNT_EMA_10 = #{amountEma10,jdbcType=DECIMAL},
+      </if>
+      <if test="amountEma20 != null" >
+        AMOUNT_EMA_20 = #{amountEma20,jdbcType=DECIMAL},
+      </if>
+      <if test="amountEma30 != null" >
+        AMOUNT_EMA_30 = #{amountEma30,jdbcType=DECIMAL},
+      </if>
+      <if test="amountEma60 != null" >
+        AMOUNT_EMA_60 = #{amountEma60,jdbcType=DECIMAL},
+      </if>
+      <if test="amountEma150 != null" >
+        AMOUNT_EMA_150 = #{amountEma150,jdbcType=DECIMAL},
+      </if>
+      <if test="closeEma6 != null" >
+        CLOSE_EMA_6 = #{closeEma6,jdbcType=DECIMAL},
+      </if>
+      <if test="closeEma13 != null" >
+        CLOSE_EMA_13 = #{closeEma13,jdbcType=DECIMAL},
+      </if>
+      <if test="closeEma12 != null" >
+        CLOSE_EMA_12 = #{closeEma12,jdbcType=DECIMAL},
+      </if>
+      <if test="closeEma26 != null" >
+        CLOSE_EMA_26 = #{closeEma26,jdbcType=DECIMAL},
+      </if>
+      <if test="difS != null" >
+        DIF_S = #{difS,jdbcType=DECIMAL},
+      </if>
+      <if test="deaS != null" >
+        DEA_S = #{deaS,jdbcType=DECIMAL},
+      </if>
+      <if test="deaSAngle != null" >
+        DEA_S_ANGLE = #{deaSAngle,jdbcType=DECIMAL},
+      </if>
+      <if test="difF != null" >
+        DIF_F = #{difF,jdbcType=DECIMAL},
+      </if>
+      <if test="deaF != null" >
+        DEA_F = #{deaF,jdbcType=DECIMAL},
+      </if>
+      <if test="deaFAngle != null" >
+        DEA_F_ANGLE = #{deaFAngle,jdbcType=DECIMAL},
+      </if>
+      <if test="kdjK != null" >
+        KDJ_K = #{kdjK,jdbcType=DECIMAL},
+      </if>
+      <if test="kdjD != null" >
+        KDJ_D = #{kdjD,jdbcType=DECIMAL},
+      </if>
+      <if test="kdjJ != null" >
+        KDJ_J = #{kdjJ,jdbcType=DECIMAL},
+      </if>
+      <if test="tr != null" >
+        TR = #{tr,jdbcType=DECIMAL},
+      </if>
+      <if test="atr != null" >
+        ATR = #{atr,jdbcType=DECIMAL},
+      </if>
+      <if test="trend != null" >
+        TREND = #{trend,jdbcType=DECIMAL},
+      </if>
+      <if test="rising != null" >
+        RISING = #{rising,jdbcType=DECIMAL},
+      </if>
+      <if test="rapidRising != null" >
+        RAPID_RISING = #{rapidRising,jdbcType=DECIMAL},
+      </if>
+      <if test="shake != null" >
+        SHAKE = #{shake,jdbcType=DECIMAL},
+      </if>
+      <if test="slump != null" >
+        SLUMP = #{slump,jdbcType=DECIMAL},
+      </if>
+      <if test="status != null" >
+        STATUS = #{status,jdbcType=CHAR},
+      </if>
+      <if test="pvSum1 != null" >
+        PV_SUM_1 = #{pvSum1,jdbcType=DECIMAL},
+      </if>
+      <if test="pvSum5 != null" >
+        PV_SUM_5 = #{pvSum5,jdbcType=DECIMAL},
+      </if>
+      <if test="pvSum10 != null" >
+        PV_SUM_10 = #{pvSum10,jdbcType=DECIMAL},
+      </if>
+      <if test="pvSum20 != null" >
+        PV_SUM_20 = #{pvSum20,jdbcType=DECIMAL},
+      </if>
+      <if test="pvSum30 != null" >
+        PV_SUM_30 = #{pvSum30,jdbcType=DECIMAL},
+      </if>
+      <if test="pvSum60 != null" >
+        PV_SUM_60 = #{pvSum60,jdbcType=DECIMAL},
+      </if>
+      <if test="stocksCount != null" >
+        STOCKS_COUNT = #{stocksCount,jdbcType=DECIMAL},
+      </if>
+      <if test="stocksRising != null" >
+        STOCKS_RISING = #{stocksRising,jdbcType=DECIMAL},
+      </if>
+      <if test="stocksSlump != null" >
+        STOCKS_SLUMP = #{stocksSlump,jdbcType=DECIMAL},
+      </if>
+      <if test="ranking != null" >
+        RANKING = #{ranking,jdbcType=DECIMAL},
+      </if>
+      <if test="trendLevel != null" >
+        TREND_LEVEL = #{trendLevel,jdbcType=DECIMAL},
+      </if>
+      <if test="securityLevel != null" >
+        SECURITY_LEVEL = #{securityLevel,jdbcType=DECIMAL},
+      </if>
+      <if test="ma5Percent != null" >
+        MA5_PERCENT = #{ma5Percent,jdbcType=DECIMAL},
+      </if>
+      <if test="ma10Percent != null" >
+        MA10_PERCENT = #{ma10Percent,jdbcType=DECIMAL},
+      </if>
+      <if test="ma20Percent != null" >
+        MA20_PERCENT = #{ma20Percent,jdbcType=DECIMAL},
+      </if>
+      <if test="ma30Percent != null" >
+        MA30_PERCENT = #{ma30Percent,jdbcType=DECIMAL},
+      </if>
+      <if test="ma60Percent != null" >
+        MA60_PERCENT = #{ma60Percent,jdbcType=DECIMAL},
+      </if>
+      <if test="ma150Percent != null" >
+        MA150_PERCENT = #{ma150Percent,jdbcType=DECIMAL},
+      </if>
+      <if test="sellAmount1 != null" >
+        SELL_AMOUNT1 = #{sellAmount1,jdbcType=DECIMAL},
+      </if>
+      <if test="sellAmount2 != null" >
+        SELL_AMOUNT2 = #{sellAmount2,jdbcType=DECIMAL},
+      </if>
+      <if test="sellAmount3 != null" >
+        SELL_AMOUNT3 = #{sellAmount3,jdbcType=DECIMAL},
+      </if>
+      <if test="sellAmount4 != null" >
+        SELL_AMOUNT4 = #{sellAmount4,jdbcType=DECIMAL},
+      </if>
+      <if test="sellAmount5 != null" >
+        SELL_AMOUNT5 = #{sellAmount5,jdbcType=DECIMAL},
+      </if>
+      <if test="sellAmount6 != null" >
+        SELL_AMOUNT6 = #{sellAmount6,jdbcType=DECIMAL},
+      </if>
+      <if test="sellAmount7 != null" >
+        SELL_AMOUNT7 = #{sellAmount7,jdbcType=DECIMAL},
+      </if>
+      <if test="sellAmount8 != null" >
+        SELL_AMOUNT8 = #{sellAmount8,jdbcType=DECIMAL},
+      </if>
+      <if test="sellAmount9 != null" >
+        SELL_AMOUNT9 = #{sellAmount9,jdbcType=DECIMAL},
+      </if>
+      <if test="sellAmount10 != null" >
+        SELL_AMOUNT10 = #{sellAmount10,jdbcType=DECIMAL},
+      </if>
+      <if test="buyAmount1 != null" >
+        BUY_AMOUNT1 = #{buyAmount1,jdbcType=DECIMAL},
+      </if>
+      <if test="buyAmount2 != null" >
+        BUY_AMOUNT2 = #{buyAmount2,jdbcType=DECIMAL},
+      </if>
+      <if test="buyAmount3 != null" >
+        BUY_AMOUNT3 = #{buyAmount3,jdbcType=DECIMAL},
+      </if>
+      <if test="buyAmount4 != null" >
+        BUY_AMOUNT4 = #{buyAmount4,jdbcType=DECIMAL},
+      </if>
+      <if test="buyAmount5 != null" >
+        BUY_AMOUNT5 = #{buyAmount5,jdbcType=DECIMAL},
+      </if>
+      <if test="buyAmount6 != null" >
+        BUY_AMOUNT6 = #{buyAmount6,jdbcType=DECIMAL},
+      </if>
+      <if test="buyAmount7 != null" >
+        BUY_AMOUNT7 = #{buyAmount7,jdbcType=DECIMAL},
+      </if>
+      <if test="buyAmount8 != null" >
+        BUY_AMOUNT8 = #{buyAmount8,jdbcType=DECIMAL},
+      </if>
+      <if test="buyAmount9 != null" >
+        BUY_AMOUNT9 = #{buyAmount9,jdbcType=DECIMAL},
+      </if>
+      <if test="buyAmount10 != null" >
+        BUY_AMOUNT10 = #{buyAmount10,jdbcType=DECIMAL},
+      </if>
+      <if test="sellAmount != null" >
+        SELL_AMOUNT = #{sellAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="buyAmount != null" >
+        BUY_AMOUNT = #{buyAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="amountWeibi != null" >
+        AMOUNT_WEIBI = #{amountWeibi,jdbcType=DECIMAL},
+      </if>
+      <if test="deletedFlag != null" >
+        DELETED_FLAG = #{deletedFlag,jdbcType=CHAR},
+      </if>
+      <if test="originCode != null" >
+        ORIGIN_CODE = #{originCode,jdbcType=VARCHAR},
+      </if>
+      <if test="createdDate != null" >
+        CREATED_DATE = #{createdDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastUpdDate != null" >
+        LAST_UPD_DATE = #{lastUpdDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modificationNum != null" >
+        MODIFICATION_NUM = #{modificationNum,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where CLASSIFY_CODE = #{classifyCode,jdbcType=VARCHAR}
+      and PERIOD_CODE = #{periodCode,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.lishao.trader.stock.bean.entity.GpClassKlineD" >
+    update GP_CLASS_KLINE_D
+    set ROW_ID = #{rowId,jdbcType=VARCHAR},
+      SEQUENCE_NO = #{sequenceNo,jdbcType=DECIMAL},
+      PRICE_OPEN = #{priceOpen,jdbcType=DECIMAL},
+      PRICE_HIGH = #{priceHigh,jdbcType=DECIMAL},
+      PRICE_LOW = #{priceLow,jdbcType=DECIMAL},
+      PRICE_CLOSE = #{priceClose,jdbcType=DECIMAL},
+      PRICE_CLOSE_REF1 = #{priceCloseRef1,jdbcType=DECIMAL},
+      TRADE_VOLUMN = #{tradeVolumn,jdbcType=DECIMAL},
+      TRADE_AMOUNT = #{tradeAmount,jdbcType=DECIMAL},
+      AMOUNT_FLOW = #{amountFlow,jdbcType=DECIMAL},
+      LARGE_AMOUNT_IN = #{largeAmountIn,jdbcType=DECIMAL},
+      LARGE_AMOUNT_OUT = #{largeAmountOut,jdbcType=DECIMAL},
+      INC_PER = #{incPer,jdbcType=DECIMAL},
+      CLOSE_EMA_5 = #{closeEma5,jdbcType=DECIMAL},
+      CLOSE_EMA_10 = #{closeEma10,jdbcType=DECIMAL},
+      CLOSE_EMA_20 = #{closeEma20,jdbcType=DECIMAL},
+      CLOSE_EMA_30 = #{closeEma30,jdbcType=DECIMAL},
+      CLOSE_EMA_60 = #{closeEma60,jdbcType=DECIMAL},
+      CLOSE_EMA_150 = #{closeEma150,jdbcType=DECIMAL},
+      VOLUMN_EMA_5 = #{volumnEma5,jdbcType=DECIMAL},
+      VOLUMN_EMA_10 = #{volumnEma10,jdbcType=DECIMAL},
+      VOLUMN_EMA_20 = #{volumnEma20,jdbcType=DECIMAL},
+      VOLUMN_EMA_30 = #{volumnEma30,jdbcType=DECIMAL},
+      VOLUMN_EMA_60 = #{volumnEma60,jdbcType=DECIMAL},
+      VOLUMN_EMA_150 = #{volumnEma150,jdbcType=DECIMAL},
+      AMOUNT_EMA_5 = #{amountEma5,jdbcType=DECIMAL},
+      AMOUNT_EMA_10 = #{amountEma10,jdbcType=DECIMAL},
+      AMOUNT_EMA_20 = #{amountEma20,jdbcType=DECIMAL},
+      AMOUNT_EMA_30 = #{amountEma30,jdbcType=DECIMAL},
+      AMOUNT_EMA_60 = #{amountEma60,jdbcType=DECIMAL},
+      AMOUNT_EMA_150 = #{amountEma150,jdbcType=DECIMAL},
+      CLOSE_EMA_6 = #{closeEma6,jdbcType=DECIMAL},
+      CLOSE_EMA_13 = #{closeEma13,jdbcType=DECIMAL},
+      CLOSE_EMA_12 = #{closeEma12,jdbcType=DECIMAL},
+      CLOSE_EMA_26 = #{closeEma26,jdbcType=DECIMAL},
+      DIF_S = #{difS,jdbcType=DECIMAL},
+      DEA_S = #{deaS,jdbcType=DECIMAL},
+      DEA_S_ANGLE = #{deaSAngle,jdbcType=DECIMAL},
+      DIF_F = #{difF,jdbcType=DECIMAL},
+      DEA_F = #{deaF,jdbcType=DECIMAL},
+      DEA_F_ANGLE = #{deaFAngle,jdbcType=DECIMAL},
+      KDJ_K = #{kdjK,jdbcType=DECIMAL},
+      KDJ_D = #{kdjD,jdbcType=DECIMAL},
+      KDJ_J = #{kdjJ,jdbcType=DECIMAL},
+      TR = #{tr,jdbcType=DECIMAL},
+      ATR = #{atr,jdbcType=DECIMAL},
+      TREND = #{trend,jdbcType=DECIMAL},
+      RISING = #{rising,jdbcType=DECIMAL},
+      RAPID_RISING = #{rapidRising,jdbcType=DECIMAL},
+      SHAKE = #{shake,jdbcType=DECIMAL},
+      SLUMP = #{slump,jdbcType=DECIMAL},
+      STATUS = #{status,jdbcType=CHAR},
+      PV_SUM_1 = #{pvSum1,jdbcType=DECIMAL},
+      PV_SUM_5 = #{pvSum5,jdbcType=DECIMAL},
+      PV_SUM_10 = #{pvSum10,jdbcType=DECIMAL},
+      PV_SUM_20 = #{pvSum20,jdbcType=DECIMAL},
+      PV_SUM_30 = #{pvSum30,jdbcType=DECIMAL},
+      PV_SUM_60 = #{pvSum60,jdbcType=DECIMAL},
+      STOCKS_COUNT = #{stocksCount,jdbcType=DECIMAL},
+      STOCKS_RISING = #{stocksRising,jdbcType=DECIMAL},
+      STOCKS_SLUMP = #{stocksSlump,jdbcType=DECIMAL},
+      RANKING = #{ranking,jdbcType=DECIMAL},
+      TREND_LEVEL = #{trendLevel,jdbcType=DECIMAL},
+      SECURITY_LEVEL = #{securityLevel,jdbcType=DECIMAL},
+      MA5_PERCENT = #{ma5Percent,jdbcType=DECIMAL},
+      MA10_PERCENT = #{ma10Percent,jdbcType=DECIMAL},
+      MA20_PERCENT = #{ma20Percent,jdbcType=DECIMAL},
+      MA30_PERCENT = #{ma30Percent,jdbcType=DECIMAL},
+      MA60_PERCENT = #{ma60Percent,jdbcType=DECIMAL},
+      MA150_PERCENT = #{ma150Percent,jdbcType=DECIMAL},
+      SELL_AMOUNT1 = #{sellAmount1,jdbcType=DECIMAL},
+      SELL_AMOUNT2 = #{sellAmount2,jdbcType=DECIMAL},
+      SELL_AMOUNT3 = #{sellAmount3,jdbcType=DECIMAL},
+      SELL_AMOUNT4 = #{sellAmount4,jdbcType=DECIMAL},
+      SELL_AMOUNT5 = #{sellAmount5,jdbcType=DECIMAL},
+      SELL_AMOUNT6 = #{sellAmount6,jdbcType=DECIMAL},
+      SELL_AMOUNT7 = #{sellAmount7,jdbcType=DECIMAL},
+      SELL_AMOUNT8 = #{sellAmount8,jdbcType=DECIMAL},
+      SELL_AMOUNT9 = #{sellAmount9,jdbcType=DECIMAL},
+      SELL_AMOUNT10 = #{sellAmount10,jdbcType=DECIMAL},
+      BUY_AMOUNT1 = #{buyAmount1,jdbcType=DECIMAL},
+      BUY_AMOUNT2 = #{buyAmount2,jdbcType=DECIMAL},
+      BUY_AMOUNT3 = #{buyAmount3,jdbcType=DECIMAL},
+      BUY_AMOUNT4 = #{buyAmount4,jdbcType=DECIMAL},
+      BUY_AMOUNT5 = #{buyAmount5,jdbcType=DECIMAL},
+      BUY_AMOUNT6 = #{buyAmount6,jdbcType=DECIMAL},
+      BUY_AMOUNT7 = #{buyAmount7,jdbcType=DECIMAL},
+      BUY_AMOUNT8 = #{buyAmount8,jdbcType=DECIMAL},
+      BUY_AMOUNT9 = #{buyAmount9,jdbcType=DECIMAL},
+      BUY_AMOUNT10 = #{buyAmount10,jdbcType=DECIMAL},
+      SELL_AMOUNT = #{sellAmount,jdbcType=DECIMAL},
+      BUY_AMOUNT = #{buyAmount,jdbcType=DECIMAL},
+      AMOUNT_WEIBI = #{amountWeibi,jdbcType=DECIMAL},
+      DELETED_FLAG = #{deletedFlag,jdbcType=CHAR},
+      ORIGIN_CODE = #{originCode,jdbcType=VARCHAR},
+      CREATED_DATE = #{createdDate,jdbcType=TIMESTAMP},
+      LAST_UPD_DATE = #{lastUpdDate,jdbcType=TIMESTAMP},
+      MODIFICATION_NUM = #{modificationNum,jdbcType=DECIMAL}
+    where CLASSIFY_CODE = #{classifyCode,jdbcType=VARCHAR}
+      and PERIOD_CODE = #{periodCode,jdbcType=VARCHAR}
+  </update>
+</mapper>

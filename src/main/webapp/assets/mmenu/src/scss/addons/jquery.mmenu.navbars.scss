@@ -1,0 +1,90 @@
+/*
+	jQuery.mmenu navbar addon CSS
+*/
+
+@import "../_inc/variables";
+
+.mm-menu > .mm-navbar
+{
+	background: inherit;
+	padding: 0;
+	z-index: 3;
+
+	//	Bugfix
+	@include mm_webkit_prefix( 'transform', translate3d( 0, 0, 0 ) );
+}
+.mm-navbar-bottom
+{
+	border-top: 1px solid transparent;
+	border-bottom: none;
+	top: auto;
+	bottom: 0;
+}
+
+.mm-navbar-top ~ .mm-navbar-top
+{
+	border-bottom: none;
+}
+.mm-navbar-bottom ~ .mm-navbar-bottom
+{
+	border-top: none;
+}
+
+.mm-navbar.mm-hasbtns
+{
+	padding: 0 $mm_btnSize;
+}
+
+@include mm_navbar_positioning( 'top', 1 );
+@include mm_navbar_positioning( 'top', 2 );
+@include mm_navbar_positioning( 'top', 3 );
+
+@include mm_navbar_positioning( 'bottom', 1 );
+@include mm_navbar_positioning( 'bottom', 2 );
+@include mm_navbar_positioning( 'bottom', 3 );
+
+
+//	Close button
+.mm-close
+{
+	text-align: right;
+	&:after
+	{
+		content: 'x';
+	}
+}
+
+
+//	Buttonbars
+.mm-navbar-2,
+.mm-navbar-3,
+.mm-navbar-4,
+.mm-navbar-5,
+.mm-navbar-6
+{
+	> *
+	{
+		display: block;
+		float: left;
+	}
+}
+.mm-navbar-2 > *
+{
+	width: 50%;
+}
+.mm-navbar-3 > *
+{
+	width: 33.33%;
+}
+.mm-navbar-4 > *
+{
+	width: 25%;
+}
+.mm-navbar-5 > *
+{
+	width: 20%;
+}
+.mm-navbar-6 > *
+{
+	width: 16.66%;
+}
