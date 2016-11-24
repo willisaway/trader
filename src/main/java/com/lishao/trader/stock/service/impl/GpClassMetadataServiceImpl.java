@@ -18,4 +18,8 @@ public class GpClassMetadataServiceImpl implements GpClassMetadataService {
 	public List<GpClassMetadata> selectByDimensionCode(String dimensionCode){
 		return stockClassMetadataMapper.selectByDimensionCode(dimensionCode);
 	}
+	
+	public List<GpClassMetadata> selectAll(){
+		return stockClassMetadataMapper.selectAll();
+	}
 }

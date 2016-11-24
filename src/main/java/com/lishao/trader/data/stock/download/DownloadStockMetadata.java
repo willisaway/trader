@@ -83,7 +83,7 @@ public class DownloadStockMetadata {
 	 */
 	public ModuleReturn downloadStockClassMap(){
 		ModuleReturn objRtn = new ModuleReturn(1);
-		List<GpClassMetadata> classList = gpClassMetadataService.selectByDimensionCode("SYZS");
+		List<GpClassMetadata> classList = gpClassMetadataService.selectAll();
 		for(GpClassMetadata classMetadata:classList){
 			StockHqByClassCallBack callback = (StockHqByClassCallBack)SpringUtil.getBean("stockHqByClassSaveClassStockMapCallBack");
 			callback.setClassifyCode(classMetadata.getClassifyCode());

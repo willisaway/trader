@@ -21,10 +21,7 @@ import net.sf.json.JSONObject;
 @Component
 public class StockKlineServiceBySina implements StockKlineService{
 	Logger logger = Logger.getLogger(StockKlineServiceBySina.class);
-	/** 重试次数 默认10 */
-	public static int RETRY_COUNT = Integer.parseInt(getProperty("retryCount"));
-	/** 重试等待时间 默认3s */
-	public static int RETRY_DELAY = Integer.parseInt(getProperty("retryDelay"));
+	
 	@Override
 	public List<Map> getKLineD(String objectCode,String objectCodeFull,String startPeriod) {
 		return getKLine(objectCode,objectCodeFull, "240",startPeriod);
@@ -102,22 +99,7 @@ public class StockKlineServiceBySina implements StockKlineService{
 		String url = "http://money.finance.sina.com.cn/quotes_service/api/json_v2.php/CN_MarketData.getKLineData?symbol={objectCodeFull}&scale={scale}&ma=no&datalen=1023";
 		url=url.replace("{objectCodeFull}", objectCodeFull);
 		url=url.replace("{scale}", scale);
-		String htmlString = null;
-		for (int i = 0; i < RETRY_COUNT; i++) {/** 重试次数 默认10 */
-			try {
-				htmlString = HttpUtil.getInputHtml(url);
-				if (i > 0) {
-					logger.info("第" +  (i+1) + "次读取" + objectCodeFull + " scale=" + scale);
-					Thread.sleep(RETRY_DELAY);// 控制频率
-				}
-				if (htmlString !=null && htmlString.length() > 0) {
-					break;
-				}
-			} catch (Exception e) {
-				logger.info("发送请求异常，classifyCode："+objectCodeFull+",scale:"+scale);
-				e.printStackTrace();
-			}
-		}
+		String htmlString = HttpUtil.getInputHtmlWithRetry(url);
 		return htmlString;
 	}
 

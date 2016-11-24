@@ -23,6 +23,12 @@
     where DIMENSION_CODE = #{dimensionCode,jdbcType=VARCHAR}
       and CLASSIFY_CODE = #{classifyCode,jdbcType=VARCHAR}
   </select>
+  <select id="selectAll" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from GP_CLASS_METADATA
+    order by classify_code
+  </select>
   <select id="selectByDimensionCode" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select 
     <include refid="Base_Column_List" />

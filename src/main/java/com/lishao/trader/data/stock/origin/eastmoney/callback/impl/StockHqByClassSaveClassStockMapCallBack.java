@@ -34,7 +34,7 @@ public class StockHqByClassSaveClassStockMapCallBack extends StockHqByClassCallB
 				addBean.setStockCode(stockCols[1]);
 				GpStockClassMap updateBean = gpStockClassMapService.selectByPrimaryKey(classifyCode, stockCols[1]);
 				if(updateBean!=null){
-					updateBean.setDeletedFlag("1");updateBean.setLastUpdDate(new Date());
+					updateBean.setDeletedFlag("0");updateBean.setLastUpdDate(new Date());
 					gpStockClassMapService.updateByPrimaryKeySelective(updateBean);
 				}else{
 					addBean.setIncluDate(new Date());

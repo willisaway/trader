@@ -21,10 +21,6 @@ import net.sf.json.JSONObject;
 @Component
 public class StockHqServiceImpl implements StockHqService {
 	Logger logger = Logger.getLogger(StockHqServiceImpl.class);
-	/** 重试次数 默认10 */
-	public static int RETRY_COUNT = Integer.parseInt(getProperty("retryCount"));
-	/** 重试等待时间 默认3s */
-	public static int RETRY_DELAY = Integer.parseInt(getProperty("retryDelay"));
 	
 	/**
 	 * 根据指数代码取成分股及行情
@@ -52,19 +48,27 @@ public class StockHqServiceImpl implements StockHqService {
 	}
 	/**
 	 * 根据指数代码取成分股及行情(分页)
+	 * http://nufm.dfcfw.com/EM_Finance2014NumericApplication/JS.aspx?type=CT&cmd=C.IE0000011&sty=FCOIATA&sortType=C&sortRule=-1&page=2&pageSize=20&js=var%20quote_123%3d{rank:[(x)],pages:(pc)}&token=7bc05d0d4c3c22ef9fca8c2a912d779c&jsName=quote_123&_g=0.5809072624812357
+	 * http://nufm.dfcfw.com/EM_Finance2014NumericApplication/JS.aspx?type=CT&cmd=C.IE3999952&sty=FCOIATA&sortType=C&sortRule=-1&page=2&pageSize=20&js=var%20quote_123%3d{rank:[(x)],pages:(pc)}&token=7bc05d0d4c3c22ef9fca8c2a912d779c&jsName=quote_123&_g=0.9010959551724071
 	 */
 	public Map getStockHqListByClassifyCodeByPage(String classifyCode,long page,long pageSize){
 		long time = new Date().getTime();
-		String url="http://nufm.dfcfw.com/EM_Finance2014NumericApplication/JS.aspx?type=CT&cmd=C.IE{classifyCode}2&sty=FCOIATA&sortType=C&sortRule=-1&page={page}&pageSize={pageSize}&js=var%20quote_123%3d{rank:[(x)],pages:(pc)}&token=7bc05d0d4c3c22ef9fca8c2a912d779c&jsName=quote_123&_g=0.08016937637874744"+time;
+		String url="http://nufm.dfcfw.com/EM_Finance2014NumericApplication/JS.aspx?type=CT&cmd=C.IE{classifyCode}{classifyType}&sty=FCOIATA&sortType=C&sortRule=-1&page={page}&pageSize={pageSize}&js=var%20quote_123%3d{rank:[(x)],pages:(pc)}&token=7bc05d0d4c3c22ef9fca8c2a912d779c&jsName=quote_123&_g=0.08016937637874744"+time;
 		url=url.replace("{classifyCode}", classifyCode);
 		url=url.replace("{page}", page+"");url=url.replace("{pageSize}", pageSize+"");
+		String classifyType="";
+		if(classifyCode.startsWith("00")){
+			classifyType="1";//上海
+		}else if(classifyCode.startsWith("399")){
+			classifyType="2";//深圳
+		}
+		url=url.replace("{classifyType}", classifyType);
 		Map jsonMap=null;
 		try {
-			String jsonStr = HttpUtil.getInputHtml(url);
+			String jsonStr = HttpUtil.getInputHtmlWithRetry(url);
 			jsonStr = jsonStr.substring(jsonStr.indexOf("{"));
 			JSONObject jsonObject = JSONObject.fromObject(jsonStr);
 			jsonMap = (Map)JSONObject.toBean(jsonObject, Map.class);
-			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

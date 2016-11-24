@@ -55,7 +55,7 @@ public class DownloadKLineD {
 			//获取需要下载的股票
 			List<GpStockMetadata> stockList = stockMetadataService.selectAll();
 			//获取需要下载的指数
-			List<GpClassMetadata> classList = stockClassMetadataService.selectByDimensionCode("SYZS");
+			List<GpClassMetadata> classList = stockClassMetadataService.selectAll();
 			logger.info("准备抓取" + stockList.size() + "个股票的数据;" + classList.size() + "个指数的数据");
 			//添加到线程池用来下载日线数据
 			for(int i=0;i<stockList.size();i++){

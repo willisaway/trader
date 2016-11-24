@@ -51,11 +51,7 @@ import net.sf.json.JsonConfig;
 @Component
 public class OriginDataServiceImpl implements OriginDataService{
 	Logger log = Logger.getLogger(OriginDataServiceImpl.class);
-	/** 重试次数 默认10 */
-	public static int RETRY_COUNT = Integer.parseInt(getProperty("retryCount"));
-	/** 重试等待时间 默认3s */
-	public static int RETRY_DELAY = Integer.parseInt(getProperty("retryDelay"));
-	
+
 	//取股票日线数据
 	public List<Map> getStockFuquanKlineD(String objectCode,Calendar calendar){
 		return getKlineD(ConstantUtil.objectTypeStock,objectCode,calendar);
@@ -93,20 +89,7 @@ public class OriginDataServiceImpl implements OriginDataService{
 	
 	public List<Map> getFuquanKlineD(String type,String objectCode,int year,int season){
 		String htmlString = null;
-		for (int i = 0; i < RETRY_COUNT; i++) {/** 重试次数 默认10 */
-			try {
-				htmlString = HttpUtil.getInputHtml(getKLineDUrl(type, objectCode, year, season));
-				if (i > 0) {
-					log.info("第" +  (i+1) + "次读取" + objectCode + " year=" + year + "&jidu=" + season);
-					Thread.sleep(RETRY_DELAY);// 控制频率
-				}
-				if (htmlString !=null && htmlString.length() > 0) {
-					break;
-				}
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
+		htmlString = HttpUtil.getInputHtmlWithRetry(getKLineDUrl(type, objectCode, year, season));
 		List<Map> resMapList = getFuquanKlineD(type,objectCode,htmlString);
 		return resMapList;
 	}
@@ -356,22 +339,7 @@ public class OriginDataServiceImpl implements OriginDataService{
 		String url="http://vip.stock.finance.sina.com.cn/corp/view/vII_NewestComponent.php?page={page}&indexid={classifyCode}";
 		url=url.replace("{page}", page+"");
 		url=url.replace("{classifyCode}", classifyCode);
-		String htmlString = null;
-		for (int i = 0; i < RETRY_COUNT; i++) {/** 重试次数 默认10 */
-			try {
-				htmlString = HttpUtil.getInputHtml(url);
-				if (i > 0) {
-					System.out.println("第" +  (i+1) + "次读取" + classifyCode + " page=" + page);
-					Thread.sleep(RETRY_DELAY);// 控制频率
-				}
-				if (htmlString !=null && htmlString.length() > 0) {
-					break;
-				}
-			} catch (Exception e) {
-				objRtn.setReturnValue(-1, "发送请求异常，classifyCode："+classifyCode+",page:"+page);
-				e.printStackTrace();
-			}
-		}
+		String htmlString = HttpUtil.getInputHtmlWithRetry(url);
 		objRtn=getStockClassMap(classifyCode, page, htmlString);
 		return objRtn;
 	}

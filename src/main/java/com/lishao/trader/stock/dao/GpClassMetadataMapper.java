@@ -19,4 +19,5 @@ public interface GpClassMetadataMapper {
     int updateByPrimaryKey(GpClassMetadata record);
     
     List<GpClassMetadata> selectByDimensionCode(String dimensionCode);
+    List<GpClassMetadata> selectAll();
 }

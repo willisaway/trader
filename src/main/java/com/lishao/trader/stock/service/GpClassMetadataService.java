@@ -6,4 +6,5 @@ import com.lishao.trader.stock.bean.entity.GpClassMetadata;
 
 public interface GpClassMetadataService {
 	public List<GpClassMetadata> selectByDimensionCode(String dimensionCode);
+	public List<GpClassMetadata> selectAll();
 }
