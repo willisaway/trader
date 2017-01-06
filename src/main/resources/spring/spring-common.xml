@@ -38,7 +38,7 @@
 		<context:include-filter type="regex" expression="com.lishao.trader.*"/>
 		<context:include-filter type="regex" expression="com.lishao.manage.*"/>
 		<context:exclude-filter type="regex" expression="com.lishao.trader.task.*"/>
-	 </context:component-scan>
+	</context:component-scan>
 	
 	<!-- 通过扫描的模式，扫描所有目录DAO -->
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">

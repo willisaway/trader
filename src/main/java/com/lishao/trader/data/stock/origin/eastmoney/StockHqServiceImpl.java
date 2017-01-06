@@ -1,7 +1,5 @@
 package com.lishao.trader.data.stock.origin.eastmoney;
 
-import static com.lishao.system.utils.ConfigUtil.getProperty;
-
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
