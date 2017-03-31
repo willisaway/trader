@@ -130,12 +130,11 @@ public abstract class BaseProviderImpl<T extends BaseModel> implements
 	}
 
 	@Transactional
-	public void delete(Long id, Long userId) {
+	public void delete(Long id) {
 		try {
 			T record = this.queryById(id);
 			record.setDeletedFlag("1");
-			record.setUpdateTime(new Date());
-			record.setUpdateBy(userId);
+			record.setLastUpdDate(new Date());
 			mapper.updateById(record);
 			RedissonUtil.set(getCacheKey(id), record);
 		} catch (Exception e) {
@@ -144,23 +143,12 @@ public abstract class BaseProviderImpl<T extends BaseModel> implements
 	}
 
 	@Transactional
-	public T update(T record,Long userid) {
-		if (record.getRowId() == null) {
-			record.setCreateBy(userid);
-			record.setCreateTime(new Date());
-		} else {
-			record.setUpdateBy(userid);
-		}
-		record = update(record);
-		return record;
-	}
-	@Transactional
 	public T update(T record) {
 		try {
 			// record.setDeletedFlag("1");
-			record.setUpdateTime(new Date());
+			record.setLastUpdDate(new Date());
 			if (record.getRowId() == null) {
-				record.setCreateTime(new Date());
+				record.setCreatedDate(new Date());
 				mapper.insert(record);
 				record = queryById(record.getRowId());//数据库非主键字段的默认值,没有更新到bean中 2017年3月21日11:09:20 liyg
 			} else {

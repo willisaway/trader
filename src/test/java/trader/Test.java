@@ -9,11 +9,9 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.lishao.system.init.ContextInit;
 import com.lishao.system.utils.SpringUtil;
-import com.lishao.trader.common.service.TradeCalendarService;
-import com.lishao.trader.stock.bean.entity.GpStockKlineD;
+//import com.lishao.trader.market.service.TradeCalendarService;
 import com.lishao.trader.data.stock.origin.OriginDataService;
 import com.lishao.trader.data.stock.origin.StockHqService;
-import com.lishao.trader.stock.service.GpStockKlineDService;
 
 public class Test {
 
@@ -26,7 +24,7 @@ public class Test {
 //		OriginDataService originDataService = (OriginDataService)SpringUtil.getBean("originDataServiceImpl");
 //		originDataService.getStockClassMap("000001");
 		StockHqService stockHqService = (StockHqService)SpringUtil.getBean("stockHqServiceImpl");
-		stockHqService.getStockClassMap("399998");
+//		stockHqService.getStockClassMap("399998");
 		System.out.println(1);
 		//测试更新交易日历
 //		TradeCalendarService tradeCalendarService=(TradeCalendarService)SpringUtil.getBean("tradeCalendarService");

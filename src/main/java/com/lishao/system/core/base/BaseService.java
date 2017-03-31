@@ -11,7 +11,6 @@ import com.lishao.system.core.support.Assert;
 import com.lishao.system.core.util.RedissonUtil;
 import com.lishao.system.core.util.WebUtil;
 
-
 /**
  * @author ShenHuaJie
  * @version 2016年5月20日 下午3:47:58
@@ -22,22 +21,12 @@ public abstract class BaseService<P extends BaseProvider<T>, T extends BaseModel
 
 	/** 修改 */
 	public void update(T record) {
-		record.setUpdateBy(WebUtil.getCurrentUserId());
 		Assert.notNull(record.getRowId(), "ID");
 		provider.update(record);
 	}
 
 	/** 新增 */
 	public void add(T record) {
-		Long uid = WebUtil.getCurrentUserId();
-		if (record.getCreateBy() == null) {
-			record.setCreateBy(uid == null ? 1 : uid);
-		}
-		if (record.getUpdateBy() == null) {
-			record.setUpdateBy(uid == null ? 1 : uid);
-		} else if (uid != null) {
-			record.setUpdateBy(uid);
-		}
 		provider.update(record);
 	}
 

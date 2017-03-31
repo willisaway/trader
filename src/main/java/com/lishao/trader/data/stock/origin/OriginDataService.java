@@ -7,7 +7,6 @@ import java.util.Map;
 import com.lishao.system.utils.ModuleReturn;
 import com.lishao.trader.data.stock.origin.sina.bean.StockAll;
 import com.lishao.trader.data.stock.origin.sina.callback.StockAllCallBack;
-import com.lishao.trader.stock.bean.entity.GpStockClassMap;
 
 /**
  * 获取外部数据接口
@@ -22,5 +21,5 @@ public interface OriginDataService {
 	public List<Map> getClassKlineD(String objectCode,Calendar calendar);
 	public List<Map> getKlineD(String type,String stockCode,Calendar calendar);
 	public ModuleReturn getTradeDetail(String type,String objectCode,String periodCode);
-	public List<GpStockClassMap> getStockClassMap(String classifyCode);
+//	public List<GpStockClassMap> getStockClassMap(String classifyCode);
 }

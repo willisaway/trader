@@ -23,14 +23,10 @@ public class BaseModel implements Serializable {
 	private String deletedFlag;
 	@TableField("origin_code")
 	private String originCode;
-	@TableField("create_time")
-    private Date createTime;
-	@TableField("create_by")
-    private Long createBy;
-	@TableField("update_time")
-    private Date updateTime;
-	@TableField("update_by")
-    private Long updateBy;
+	@TableField("created_date")
+    private Date createdDate;
+	@TableField("last_upd_date")
+    private Date lastUpdDate;
 	@TableField("modification_num")
     private Integer modificationNum;
 	
@@ -59,30 +55,20 @@ public class BaseModel implements Serializable {
 	public void setOriginCode(String originCode) {
 		this.originCode = originCode;
 	}
-	public Date getCreateTime() {
-		return createTime;
+	public Date getCreatedDate() {
+		return createdDate;
 	}
-	public void setCreateTime(Date createTime) {
-		this.createTime = createTime;
+	public void setCreatedDate(Date createdDate) {
+		this.createdDate = createdDate;
 	}
-	public Long getCreateBy() {
-		return createBy;
+
+	public Date getLastUpdDate() {
+		return lastUpdDate;
 	}
-	public void setCreateBy(Long createBy) {
-		this.createBy = createBy;
+	public void setLastUpdDate(Date lastUpdDate) {
+		this.lastUpdDate = lastUpdDate;
 	}
-	public Date getUpdateTime() {
-		return updateTime;
-	}
-	public void setUpdateTime(Date updateTime) {
-		this.updateTime = updateTime;
-	}
-	public Long getUpdateBy() {
-		return updateBy;
-	}
-	public void setUpdateBy(Long updateBy) {
-		this.updateBy = updateBy;
-	}
+
 	public Integer getModificationNum() {
 		return modificationNum;
 	}

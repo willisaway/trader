@@ -24,10 +24,6 @@ import com.lishao.system.utils.ConfigUtil;
 import com.lishao.system.utils.NumberUtil;
 import com.lishao.system.utils.SpringUtil;
 import com.lishao.trader.common.ConstantUtil;
-import com.lishao.trader.stock.bean.entity.GpClassMetadata;
-import com.lishao.trader.stock.bean.entity.GpStockMetadata;
-import com.lishao.trader.stock.service.GpClassMetadataService;
-import com.lishao.trader.stock.service.GpStockMetadataService;
 
 /**下载股票日线数据入口类
  * 【注意事项】
@@ -41,10 +37,10 @@ import com.lishao.trader.stock.service.GpStockMetadataService;
 */
 @Component
 public class DownloadKLineD {
-	@Resource
-	GpStockMetadataService stockMetadataService;
-	@Resource
-	GpClassMetadataService stockClassMetadataService;
+//	@Resource
+//	GpStockMetadataService stockMetadataService;
+//	@Resource
+//	GpClassMetadataService stockClassMetadataService;
 	Logger logger=Logger.getLogger(DownloadKLineD.class);
 	/**
 	 * 入口方法
@@ -53,29 +49,29 @@ public class DownloadKLineD {
 		Date startTime = new Date(System.currentTimeMillis());
 		try {
 			//获取需要下载的股票
-			List<GpStockMetadata> stockList = stockMetadataService.selectAll();
-			//获取需要下载的指数
-			List<GpClassMetadata> classList = stockClassMetadataService.selectAll();
-			logger.info("准备抓取" + stockList.size() + "个股票的数据;" + classList.size() + "个指数的数据");
-			//添加到线程池用来下载日线数据
-			for(int i=0;i<stockList.size();i++){
-				DownloadKLineDThread downloadKLineDThread = (DownloadKLineDThread)SpringUtil.getBean("downloadKLineDThread");
-				downloadKLineDThread.setType(ConstantUtil.objectTypeStock);
-				downloadKLineDThread.setObjectCode(stockList.get(i).getStockCode());
-				downloadKLineDThread.setObjectCodeFull(stockList.get(i).getStockCodeFull());
-				downloadKLineDThread.setStartDate(stockList.get(i).getListingDate());
-				downloadKLineDThread.setDesc("股票"+stockList.get(i).getStockCode()+"日线数据下载");
-				downloadKLineDThread.setPoolCode("日线数据盘后");downloadKLineDThread.setPoolName("日线数据盘后");
-				ThreadPoolManager.addTask(downloadKLineDThread);
-			}
-			for(int i=0;i<classList.size();i++){
-				DownloadKLineDThread downloadKLineDThread = (DownloadKLineDThread)SpringUtil.getBean("downloadKLineDThread");
-				downloadKLineDThread.setType(ConstantUtil.objectTypeStockClass);
-				downloadKLineDThread.setObjectCode(classList.get(i).getClassifyCode());
-				downloadKLineDThread.setDesc("指数"+stockList.get(i).getStockCode()+"日线数据下载");
-				downloadKLineDThread.setPoolCode("日线数据盘后");downloadKLineDThread.setPoolName("日线数据盘后");
-				ThreadPoolManager.addTask(downloadKLineDThread);
-			}
+//			List<GpStockMetadata> stockList = stockMetadataService.selectAll();
+//			//获取需要下载的指数
+//			List<GpClassMetadata> classList = stockClassMetadataService.selectAll();
+//			logger.info("准备抓取" + stockList.size() + "个股票的数据;" + classList.size() + "个指数的数据");
+//			//添加到线程池用来下载日线数据
+//			for(int i=0;i<stockList.size();i++){
+//				DownloadKLineDThread downloadKLineDThread = (DownloadKLineDThread)SpringUtil.getBean("downloadKLineDThread");
+//				downloadKLineDThread.setType(ConstantUtil.objectTypeStock);
+//				downloadKLineDThread.setObjectCode(stockList.get(i).getStockCode());
+//				downloadKLineDThread.setObjectCodeFull(stockList.get(i).getStockCodeFull());
+//				downloadKLineDThread.setStartDate(stockList.get(i).getListingDate());
+//				downloadKLineDThread.setDesc("股票"+stockList.get(i).getStockCode()+"日线数据下载");
+//				downloadKLineDThread.setPoolCode("日线数据盘后");downloadKLineDThread.setPoolName("日线数据盘后");
+//				ThreadPoolManager.addTask(downloadKLineDThread);
+//			}
+//			for(int i=0;i<classList.size();i++){
+//				DownloadKLineDThread downloadKLineDThread = (DownloadKLineDThread)SpringUtil.getBean("downloadKLineDThread");
+//				downloadKLineDThread.setType(ConstantUtil.objectTypeStockClass);
+//				downloadKLineDThread.setObjectCode(classList.get(i).getClassifyCode());
+//				downloadKLineDThread.setDesc("指数"+stockList.get(i).getStockCode()+"日线数据下载");
+//				downloadKLineDThread.setPoolCode("日线数据盘后");downloadKLineDThread.setPoolName("日线数据盘后");
+//				ThreadPoolManager.addTask(downloadKLineDThread);
+//			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

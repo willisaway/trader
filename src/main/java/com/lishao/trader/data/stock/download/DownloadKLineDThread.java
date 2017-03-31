@@ -20,24 +20,16 @@ import com.lishao.system.utils.ComparatorStockKlineDAsc;
 import com.lishao.system.utils.DateUtil;
 import com.lishao.system.utils.NumberUtil;
 import com.lishao.system.utils.SpringUtil;
-import com.lishao.trader.base.bean.EntityBean;
 import com.lishao.trader.common.ConstantUtil;
-import com.lishao.trader.common.service.TradeCalendarService;
-import com.lishao.trader.stock.bean.entity.GpStockKlineD;
+//import com.lishao.trader.market.service.TradeCalendarService;
 import com.lishao.trader.data.stock.origin.OriginDataService;
 import com.lishao.trader.data.stock.origin.sina.OriginDataServiceImpl;
-import com.lishao.trader.stock.service.GpClassKlineDService;
 import com.lishao.trader.stock.service.ProcedureService;
-import com.lishao.trader.stock.service.GpStockKlineDService;
 import com.lishao.system.component.threadpool.ThreadExtend;
 
 @Component
 @Scope("prototype")
 public class DownloadKLineDThread extends ThreadExtend{
-	@Resource
-	GpStockKlineDService stockKlineDService;
-	@Resource
-	GpClassKlineDService classKlineDService;
 	@Resource
 	ProcedureService procedureService;
 	String type;
@@ -48,25 +40,25 @@ public class DownloadKLineDThread extends ThreadExtend{
 	
 	public void runCore(){
 		try {
-			EntityBean kLineDBean=null;
-			if(ConstantUtil.objectTypeStock.equals(type)){
-				kLineDBean=stockKlineDService.selectLastStockKlineDByStockCode(objectCode);
-			}else if(ConstantUtil.objectTypeStockClass.equals(type)){
-				kLineDBean=classKlineDService.selectLastClassKlineDByClassifyCode(objectCode);
-			}
+//			EntityBean kLineDBean=null;
+//			if(ConstantUtil.objectTypeStock.equals(type)){
+//				kLineDBean=stockKlineDService.selectLastStockKlineDByStockCode(objectCode);
+//			}else if(ConstantUtil.objectTypeStockClass.equals(type)){
+//				kLineDBean=classKlineDService.selectLastClassKlineDByClassifyCode(objectCode);
+//			}
 			//计算下载日线的起始日期
 			SimpleDateFormat sdf= new SimpleDateFormat("yyyy-MM-dd");
 			Calendar startCalendar = Calendar.getInstance();
-			if(kLineDBean!=null){
-				startDate = sdf.parse((String)PropertyUtils.getProperty(kLineDBean, "periodCode"));
-				startCalendar.setTime(startDate);
-				startCalendar.add(Calendar.DATE, 1);
-			}else if(startDate!=null){
-				startCalendar.setTime(startDate);
-			}else{
-				startCalendar.setTime(new java.util.Date());
-				startCalendar.add(Calendar.YEAR, -5);//默认下载5年的
-			}
+//			if(kLineDBean!=null){
+//				startDate = sdf.parse((String)PropertyUtils.getProperty(kLineDBean, "periodCode"));
+//				startCalendar.setTime(startDate);
+//				startCalendar.add(Calendar.DATE, 1);
+//			}else if(startDate!=null){
+//				startCalendar.setTime(startDate);
+//			}else{
+//				startCalendar.setTime(new java.util.Date());
+//				startCalendar.add(Calendar.YEAR, -5);//默认下载5年的
+//			}
 			//开始去新浪下载
 			OriginDataService dataLoader = new OriginDataServiceImpl();
 			List<Map> resMapList = dataLoader.getKlineD(type,objectCode, startCalendar);
@@ -103,11 +95,11 @@ public class DownloadKLineDThread extends ThreadExtend{
 	public void afterDownload(){
 		//更新交易日历
 		if(ConstantUtil.objectTypeStockClass.equals(type)&&"000001".equals(objectCode)){
-			TradeCalendarService tradeCalendarService=(TradeCalendarService)SpringUtil.getBean("tradeCalendarService");
-			Map paraMap=new HashMap();
-			paraMap.put("marketId", "100");
-			paraMap.put("classifyCode", "000001");
-			tradeCalendarService.insertCalendar(paraMap);
+//			TradeCalendarService tradeCalendarService=(TradeCalendarService)SpringUtil.getBean("tradeCalendarService");
+//			Map paraMap=new HashMap();
+//			paraMap.put("marketId", "100");
+//			paraMap.put("classifyCode", "000001");
+//			tradeCalendarService.insertCalendar(paraMap);
 		}
 	}
 	//排序

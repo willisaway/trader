@@ -37,7 +37,6 @@ import com.lishao.trader.common.ConstantUtil;
 import com.lishao.trader.data.stock.origin.OriginDataService;
 import com.lishao.trader.data.stock.origin.sina.bean.StockAll;
 import com.lishao.trader.data.stock.origin.sina.callback.StockAllCallBack;
-import com.lishao.trader.stock.bean.entity.GpStockClassMap;
 
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
@@ -323,71 +322,71 @@ public class OriginDataServiceImpl implements OriginDataService{
 	 * @param classifyCode
 	 * @return
 	 */
-	public List<GpStockClassMap> getStockClassMap(String classifyCode){
-		List<GpStockClassMap> stockClassList=new ArrayList<GpStockClassMap>();
-		ModuleReturn objRtn=new ModuleReturn(1);
-		do{
-			objRtn = getStockClassMap(classifyCode, objRtn.getReturnValue());
-			if(objRtn.getReturnValue()>0){
-				stockClassList.addAll((List<GpStockClassMap>)objRtn.getReturnPara("stockClassList"));
-			}
-		}while(objRtn.getReturnValue()>1);//如果值大于1,则还有下一页
-		return stockClassList;
-	}
+//	public List<GpStockClassMap> getStockClassMap(String classifyCode){
+//		List<GpStockClassMap> stockClassList=new ArrayList<GpStockClassMap>();
+//		ModuleReturn objRtn=new ModuleReturn(1);
+//		do{
+//			objRtn = getStockClassMap(classifyCode, objRtn.getReturnValue());
+//			if(objRtn.getReturnValue()>0){
+//				stockClassList.addAll((List<GpStockClassMap>)objRtn.getReturnPara("stockClassList"));
+//			}
+//		}while(objRtn.getReturnValue()>1);//如果值大于1,则还有下一页
+//		return stockClassList;
+//	}
 	public ModuleReturn getStockClassMap(String classifyCode,long page){
 		ModuleReturn objRtn = new ModuleReturn(1);
 		String url="http://vip.stock.finance.sina.com.cn/corp/view/vII_NewestComponent.php?page={page}&indexid={classifyCode}";
 		url=url.replace("{page}", page+"");
 		url=url.replace("{classifyCode}", classifyCode);
 		String htmlString = HttpUtil.getInputHtmlWithRetry(url);
-		objRtn=getStockClassMap(classifyCode, page, htmlString);
+//		objRtn=getStockClassMap(classifyCode, page, htmlString);
 		return objRtn;
 	}
-	public ModuleReturn getStockClassMap(String classifyCode,long page,String htmlString){
-		ModuleReturn objRtn = new ModuleReturn(1);
-		List<GpStockClassMap> stockClassList=new ArrayList<GpStockClassMap>();
-		try {
-			Parser myParser = new Parser(htmlString);
-			myParser.setEncoding("UTF-8");
-			NodeFilter tableFilter = new NodeClassFilter(TableTag.class);
-			OrFilter lastFilter = new OrFilter();
-			lastFilter.setPredicates(new NodeFilter[] { tableFilter });
-			NodeList nodeList = myParser.parse(lastFilter);
-			for (int i = 0; i <= nodeList.size(); i++){
-				if (nodeList.elementAt(i) instanceof TableTag) {
-					TableTag tag = (TableTag) nodeList.elementAt(i);
-					if (!tag.getText().contains("id=\"NewStockTable\"")) {
-						continue;
-					}
-					TableRow[] rows = tag.getRows();
-					for (int j = 2; j < rows.length; j++) {
-						TableRow tr = (TableRow) rows[j];
-						GpStockClassMap bean = createStockClassObject(classifyCode,tr);
-						if (bean != null && bean.getStockCode() != null) {
-							stockClassList.add(bean);
-						}
-					}
-				}
-			}
-			//判断是否有下一页
-			if(htmlString.indexOf("下一页")>0){
-				objRtn.setReturnValue(page+1);
-			}else{
-				objRtn.setReturnValue(1);
-			}
-			objRtn.setReturnPara("stockClassList", stockClassList);
-		} catch (Exception e) {
-			objRtn.setReturnValue(-1, "解析html异常");e.printStackTrace();
-		}
-		return objRtn;
-	}
-	public GpStockClassMap createStockClassObject(String classifyCode,TableRow tr){
-		GpStockClassMap bean = new GpStockClassMap();
-		TableColumn[] td = tr.getColumns();
-		int pos=0;
-		bean.setClassifyCode(classifyCode);
-		bean.setStockCode(td[pos++].toPlainTextString().trim());
-		pos++;
-		return bean;
-	}
+//	public ModuleReturn getStockClassMap(String classifyCode,long page,String htmlString){
+//		ModuleReturn objRtn = new ModuleReturn(1);
+//		List<GpStockClassMap> stockClassList=new ArrayList<GpStockClassMap>();
+//		try {
+//			Parser myParser = new Parser(htmlString);
+//			myParser.setEncoding("UTF-8");
+//			NodeFilter tableFilter = new NodeClassFilter(TableTag.class);
+//			OrFilter lastFilter = new OrFilter();
+//			lastFilter.setPredicates(new NodeFilter[] { tableFilter });
+//			NodeList nodeList = myParser.parse(lastFilter);
+//			for (int i = 0; i <= nodeList.size(); i++){
+//				if (nodeList.elementAt(i) instanceof TableTag) {
+//					TableTag tag = (TableTag) nodeList.elementAt(i);
+//					if (!tag.getText().contains("id=\"NewStockTable\"")) {
+//						continue;
+//					}
+//					TableRow[] rows = tag.getRows();
+//					for (int j = 2; j < rows.length; j++) {
+//						TableRow tr = (TableRow) rows[j];
+//						GpStockClassMap bean = createStockClassObject(classifyCode,tr);
+//						if (bean != null && bean.getStockCode() != null) {
+//							stockClassList.add(bean);
+//						}
+//					}
+//				}
+//			}
+//			//判断是否有下一页
+//			if(htmlString.indexOf("下一页")>0){
+//				objRtn.setReturnValue(page+1);
+//			}else{
+//				objRtn.setReturnValue(1);
+//			}
+//			objRtn.setReturnPara("stockClassList", stockClassList);
+//		} catch (Exception e) {
+//			objRtn.setReturnValue(-1, "解析html异常");e.printStackTrace();
+//		}
+//		return objRtn;
+//	}
+//	public GpStockClassMap createStockClassObject(String classifyCode,TableRow tr){
+//		GpStockClassMap bean = new GpStockClassMap();
+//		TableColumn[] td = tr.getColumns();
+//		int pos=0;
+//		bean.setClassifyCode(classifyCode);
+//		bean.setStockCode(td[pos++].toPlainTextString().trim());
+//		pos++;
+//		return bean;
+//	}
 }

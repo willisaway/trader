@@ -12,7 +12,6 @@ import com.lishao.system.component.threadpool.ThreadPoolManager;
 import com.lishao.system.utils.HttpUtil;
 import com.lishao.trader.data.stock.origin.StockHqService;
 import com.lishao.trader.data.stock.origin.eastmoney.callback.StockHqByClassCallBack;
-import com.lishao.trader.stock.bean.entity.GpStockClassMap;
 
 import net.sf.json.JSONObject;
 
@@ -39,7 +38,7 @@ public class StockHqServiceImpl implements StockHqService {
 		}
 		//调用回调方法
 		if(callback!=null&&stockHqList.size()>0){
-			callback.setStockHqList(stockHqList);
+//			callback.setStockHqList(stockHqList);
 			ThreadPoolManager.addTask(callback);
 		}
 		return stockHqList;
@@ -75,18 +74,18 @@ public class StockHqServiceImpl implements StockHqService {
 	/**
 	 * 根据指数代码取成分股,暂不使用
 	 */
-	@Override
-	public List<GpStockClassMap> getStockClassMap(String classifyCode) {
-		List<String> stockHqList = getStockHqListByClassifyCode(classifyCode,null);
-		List<GpStockClassMap> returnList = new ArrayList<GpStockClassMap>();
-		for(String stockHq:stockHqList){
-			String[] stockCols = stockHq.split(",");
-			GpStockClassMap bean = new GpStockClassMap();
-			bean.setClassifyCode(classifyCode);
-			bean.setStockCode(stockCols[1]);
-			returnList.add(bean);
-		}
-		return returnList;
-	}
+//	@Override
+//	public List<GpStockClassMap> getStockClassMap(String classifyCode) {
+//		List<String> stockHqList = getStockHqListByClassifyCode(classifyCode,null);
+//		List<GpStockClassMap> returnList = new ArrayList<GpStockClassMap>();
+//		for(String stockHq:stockHqList){
+//			String[] stockCols = stockHq.split(",");
+//			GpStockClassMap bean = new GpStockClassMap();
+//			bean.setClassifyCode(classifyCode);
+//			bean.setStockCode(stockCols[1]);
+//			returnList.add(bean);
+//		}
+//		return returnList;
+//	}
 
 }

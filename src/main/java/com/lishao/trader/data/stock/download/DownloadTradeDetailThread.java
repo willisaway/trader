@@ -10,13 +10,12 @@ import org.springframework.stereotype.Component;
 import com.lishao.system.utils.ModuleReturn;
 import com.lishao.trader.data.stock.origin.OriginDataService;
 import com.lishao.trader.data.stock.origin.sina.OriginDataServiceImpl;
-import com.lishao.trader.stock.service.GpStockKlineDService;
 import com.lishao.system.component.threadpool.ThreadExtend;
 
 @Component
 @Scope("prototype")
 public class DownloadTradeDetailThread extends ThreadExtend{
-	GpStockKlineDService stockKlineDService;
+//	GpStockKlineDService stockKlineDService;
 	String type;
 	String objectCode;
 	String objectCodeFull;
@@ -30,22 +29,16 @@ public class DownloadTradeDetailThread extends ThreadExtend{
 			Map saveMap = objRtn.getReturnPara();
 			saveMap.put("periodCode", periodCode);
 			saveMap.put("objectCode", objectCode);
-			int iResult = stockKlineDService.updateTradeDetailCount(saveMap);
-			if(iResult>0){
-				objRtn.setReturnValue(1);
-			}else{
-				objRtn.setReturnValue(-1,"保存结果数据失败");
-				logger.error("保存结果数据失败:"+saveMap.toString());
-			}
+//			int iResult = stockKlineDService.updateTradeDetailCount(saveMap);
+//			if(iResult>0){
+//				objRtn.setReturnValue(1);
+//			}else{
+//				objRtn.setReturnValue(-1,"保存结果数据失败");
+//				logger.error("保存结果数据失败:"+saveMap.toString());
+//			}
 		}
 	}
 	//get set
-	public GpStockKlineDService getStockKlineDService() {
-		return stockKlineDService;
-	}
-	public void setStockKlineDService(GpStockKlineDService stockKlineDService) {
-		this.stockKlineDService = stockKlineDService;
-	}
 	public String getType() {
 		return type;
 	}

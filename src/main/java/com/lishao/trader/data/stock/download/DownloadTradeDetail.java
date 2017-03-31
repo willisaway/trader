@@ -8,7 +8,6 @@ import org.springframework.stereotype.Component;
 import com.lishao.system.component.threadpool.ThreadPoolManager;
 import com.lishao.system.utils.SpringUtil;
 import com.lishao.trader.common.ConstantUtil;
-import com.lishao.trader.stock.service.GpStockKlineDService;
 
 /**
  * 下载交易数据的线程池管理
@@ -21,7 +20,7 @@ import com.lishao.trader.stock.service.GpStockKlineDService;
 public class DownloadTradeDetail {
 	Logger logger = Logger.getLogger(DownloadTradeDetail.class);
 	@Resource
-	GpStockKlineDService stockKlineDService;
+//	GpStockKlineDService stockKlineDService;
 	/**
 	 * 下载股票交易数据，通知模式
 	 * @param objectCode
@@ -31,9 +30,9 @@ public class DownloadTradeDetail {
 			return;
 		}
 		//判断是否已经统计过
-		if(ConstantUtil.objectTypeStock.equals(type)&&stockKlineDService.checkHasSumTradeDetail(objectCode, periodCode)){
-			return;
-		}
+//		if(ConstantUtil.objectTypeStock.equals(type)&&stockKlineDService.checkHasSumTradeDetail(objectCode, periodCode)){
+//			return;
+//		}
 		DownloadTradeDetailThread downloadTradeDetailThread = (DownloadTradeDetailThread)SpringUtil.getBean("downloadTradeDetailThread");
 		downloadTradeDetailThread.setType(type);
 		downloadTradeDetailThread.setObjectCode(objectCode);
