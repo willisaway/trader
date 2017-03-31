@@ -8,7 +8,7 @@ import org.apache.commons.httpclient.methods.GetMethod;
 import org.apache.commons.httpclient.methods.PostMethod; 
 import org.apache.commons.httpclient.params.HttpMethodParams; 
 import org.apache.commons.httpclient.util.URIUtil; 
-import org.apache.commons.lang3.StringUtils; 
+import org.apache.commons.lang.StringUtils; 
 import org.apache.commons.logging.Log; 
 import org.apache.commons.logging.LogFactory; 
 
