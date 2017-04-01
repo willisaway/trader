@@ -1,5 +1,6 @@
 package com.lishao.system.core.base;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -59,6 +60,10 @@ public abstract class BaseService<P extends BaseProvider<T>, T extends BaseModel
 	 * 条件查询，不分页
 	 */
 	public List<T> queryAll(Map<String, Object> params) {
+		return provider.queryAll(params);
+	}
+	public List<T> queryAll() {
+		Map<String, Object> params = new HashMap<String, Object>();
 		return provider.queryAll(params);
 	}
 }

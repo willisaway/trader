@@ -1,6 +1,7 @@
 package com.lishao.system.core.base;
 
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -208,6 +209,12 @@ public abstract class BaseProviderImpl<T extends BaseModel> implements
 	 * @return
 	 */
 	public List<T> queryAll(Map<String, Object> params) {
+		List<Long> ids = mapper.selectIdByMap(params);
+		List<T> resultList = getList(ids);
+		return resultList;
+	}
+	public List<T> queryAll() {
+		Map<String, Object> params = new HashMap<String, Object>();
 		List<Long> ids = mapper.selectIdByMap(params);
 		List<T> resultList = getList(ids);
 		return resultList;

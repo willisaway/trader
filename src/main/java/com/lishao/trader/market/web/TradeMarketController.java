@@ -17,7 +17,7 @@ import com.lishao.system.utils.ModuleReturn;
 import com.lishao.trader.market.model.TradeMarket;
 import com.lishao.trader.market.service.TradeMarketService;
 
-@Controller
+@RestController
 @RequestMapping(value = "tradeMarket")
 public class TradeMarketController {
 	@Resource
@@ -28,7 +28,8 @@ public class TradeMarketController {
 		ModuleReturn objRtn = new ModuleReturn(1);
 		Map<String, Object> params = WebUtil.getParameterMap(request);
 		List<TradeMarket> marketList = tradeMarketService.queryAll(params);
+		objRtn.setReturnPara("marketList", marketList);;
 		System.out.println("");
-		return null;
+		return objRtn;
 	}
 }

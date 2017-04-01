@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lishao.trader.stock.dao.GpStockMetadataMapper" >
+  <resultMap id="BaseResultMap" type="com.lishao.trader.stock.model.GpStockMetadata" >
+    <id column="ROW_ID" property="rowId" jdbcType="BIGINT" />
+    <result column="STOCK_CODE_FULL" property="stockCodeFull" jdbcType="VARCHAR" />
+    <result column="STOCK_CODE" property="stockCode" jdbcType="VARCHAR" />
+    <result column="STOCK_NAME" property="stockName" jdbcType="VARCHAR" />
+    <result column="LISTING_DATE" property="listingDate" jdbcType="TIMESTAMP" />
+    <result column="TOTAL_STOCK_NUM" property="totalStockNum" jdbcType="DECIMAL" />
+    <result column="TRADABLE_STOCK_NUM" property="tradableStockNum" jdbcType="DECIMAL" />
+    <result column="MARKET_VALUE" property="marketValue" jdbcType="DECIMAL" />
+    <result column="TRADABLE_MARKET_VALUE" property="tradableMarketValue" jdbcType="DECIMAL" />
+    <result column="REMARK" property="remark" jdbcType="VARCHAR" />
+    <result column="DELETED_FLAG" property="deletedFlag" jdbcType="CHAR" />
+    <result column="ORIGIN_CODE" property="originCode" jdbcType="VARCHAR" />
+    <result column="CREATED_DATE" property="createdDate" jdbcType="TIMESTAMP" />
+    <result column="LAST_UPD_DATE" property="lastUpdDate" jdbcType="TIMESTAMP" />
+    <result column="MODIFICATION_NUM" property="modificationNum" jdbcType="DECIMAL" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ROW_ID, STOCK_CODE_FULL, STOCK_CODE, STOCK_NAME, LISTING_DATE, TOTAL_STOCK_NUM, TRADABLE_STOCK_NUM, 
+    MARKET_VALUE, TRADABLE_MARKET_VALUE, REMARK, DELETED_FLAG, ORIGIN_CODE, CREATED_DATE, 
+    LAST_UPD_DATE, MODIFICATION_NUM
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from gp_stock_metadata
+    where ROW_ID = #{rowId,jdbcType=BIGINT}
+  </select>
+  <select id="selectIdByMap" parameterType="java.util.Map" resultType="java.lang.Long">
+    select a.row_id from gp_stock_metadata a
+	WHERE 1=1
+	<if test="cm.deletedFlag != null and cm.deletedFlag != ''">
+      AND a.deleted_flag = #{cm.deletedFlag}
+	</if>
+	<if test="cm.rowId != null and cm.rowId != ''">
+      AND a.row_id = #{cm.rowId}
+	</if>
+	<if test="cm.stockCode != null and cm.stockCode != ''">
+      AND a.stock_code = #{cm.stockCode}
+	</if>
+	<if test="cm.stockCodeFull != null and cm.stockCodeFull != ''">
+      AND a.stock_code_full = #{cm.stockCodeFull}
+	</if>
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from gp_stock_metadata
+    where ROW_ID = #{rowId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insertSelective" parameterType="com.lishao.trader.stock.model.GpStockMetadata" >
+    insert into gp_stock_metadata
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="rowId != null" >
+        ROW_ID,
+      </if>
+      <if test="stockCodeFull != null" >
+        STOCK_CODE_FULL,
+      </if>
+      <if test="stockCode != null" >
+        STOCK_CODE,
+      </if>
+      <if test="stockName != null" >
+        STOCK_NAME,
+      </if>
+      <if test="listingDate != null" >
+        LISTING_DATE,
+      </if>
+      <if test="totalStockNum != null" >
+        TOTAL_STOCK_NUM,
+      </if>
+      <if test="tradableStockNum != null" >
+        TRADABLE_STOCK_NUM,
+      </if>
+      <if test="marketValue != null" >
+        MARKET_VALUE,
+      </if>
+      <if test="tradableMarketValue != null" >
+        TRADABLE_MARKET_VALUE,
+      </if>
+      <if test="remark != null" >
+        REMARK,
+      </if>
+      <if test="deletedFlag != null" >
+        DELETED_FLAG,
+      </if>
+      <if test="originCode != null" >
+        ORIGIN_CODE,
+      </if>
+      <if test="createdDate != null" >
+        CREATED_DATE,
+      </if>
+      <if test="lastUpdDate != null" >
+        LAST_UPD_DATE,
+      </if>
+      <if test="modificationNum != null" >
+        MODIFICATION_NUM,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="rowId != null" >
+        #{rowId,jdbcType=BIGINT},
+      </if>
+      <if test="stockCodeFull != null" >
+        #{stockCodeFull,jdbcType=VARCHAR},
+      </if>
+      <if test="stockCode != null" >
+        #{stockCode,jdbcType=VARCHAR},
+      </if>
+      <if test="stockName != null" >
+        #{stockName,jdbcType=VARCHAR},
+      </if>
+      <if test="listingDate != null" >
+        #{listingDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="totalStockNum != null" >
+        #{totalStockNum,jdbcType=DECIMAL},
+      </if>
+      <if test="tradableStockNum != null" >
+        #{tradableStockNum,jdbcType=DECIMAL},
+      </if>
+      <if test="marketValue != null" >
+        #{marketValue,jdbcType=DECIMAL},
+      </if>
+      <if test="tradableMarketValue != null" >
+        #{tradableMarketValue,jdbcType=DECIMAL},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="deletedFlag != null" >
+        #{deletedFlag,jdbcType=CHAR},
+      </if>
+      <if test="originCode != null" >
+        #{originCode,jdbcType=VARCHAR},
+      </if>
+      <if test="createdDate != null" >
+        #{createdDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastUpdDate != null" >
+        #{lastUpdDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modificationNum != null" >
+        #{modificationNum,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.lishao.trader.stock.model.GpStockMetadata" >
+    update gp_stock_metadata
+    <set >
+      <if test="stockCodeFull != null" >
+        STOCK_CODE_FULL = #{stockCodeFull,jdbcType=VARCHAR},
+      </if>
+      <if test="stockCode != null" >
+        STOCK_CODE = #{stockCode,jdbcType=VARCHAR},
+      </if>
+      <if test="stockName != null" >
+        STOCK_NAME = #{stockName,jdbcType=VARCHAR},
+      </if>
+      <if test="listingDate != null" >
+        LISTING_DATE = #{listingDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="totalStockNum != null" >
+        TOTAL_STOCK_NUM = #{totalStockNum,jdbcType=DECIMAL},
+      </if>
+      <if test="tradableStockNum != null" >
+        TRADABLE_STOCK_NUM = #{tradableStockNum,jdbcType=DECIMAL},
+      </if>
+      <if test="marketValue != null" >
+        MARKET_VALUE = #{marketValue,jdbcType=DECIMAL},
+      </if>
+      <if test="tradableMarketValue != null" >
+        TRADABLE_MARKET_VALUE = #{tradableMarketValue,jdbcType=DECIMAL},
+      </if>
+      <if test="remark != null" >
+        REMARK = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="deletedFlag != null" >
+        DELETED_FLAG = #{deletedFlag,jdbcType=CHAR},
+      </if>
+      <if test="originCode != null" >
+        ORIGIN_CODE = #{originCode,jdbcType=VARCHAR},
+      </if>
+      <if test="createdDate != null" >
+        CREATED_DATE = #{createdDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastUpdDate != null" >
+        LAST_UPD_DATE = #{lastUpdDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modificationNum != null" >
+        MODIFICATION_NUM = #{modificationNum,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where ROW_ID = #{rowId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.lishao.trader.stock.model.GpStockMetadata" >
+    update gp_stock_metadata
+    set STOCK_CODE_FULL = #{stockCodeFull,jdbcType=VARCHAR},
+      STOCK_CODE = #{stockCode,jdbcType=VARCHAR},
+      STOCK_NAME = #{stockName,jdbcType=VARCHAR},
+      LISTING_DATE = #{listingDate,jdbcType=TIMESTAMP},
+      TOTAL_STOCK_NUM = #{totalStockNum,jdbcType=DECIMAL},
+      TRADABLE_STOCK_NUM = #{tradableStockNum,jdbcType=DECIMAL},
+      MARKET_VALUE = #{marketValue,jdbcType=DECIMAL},
+      TRADABLE_MARKET_VALUE = #{tradableMarketValue,jdbcType=DECIMAL},
+      REMARK = #{remark,jdbcType=VARCHAR},
+      DELETED_FLAG = #{deletedFlag,jdbcType=CHAR},
+      ORIGIN_CODE = #{originCode,jdbcType=VARCHAR},
+      CREATED_DATE = #{createdDate,jdbcType=TIMESTAMP},
+      LAST_UPD_DATE = #{lastUpdDate,jdbcType=TIMESTAMP},
+      MODIFICATION_NUM = #{modificationNum,jdbcType=DECIMAL}
+    where ROW_ID = #{rowId,jdbcType=BIGINT}
+  </update>
+</mapper>

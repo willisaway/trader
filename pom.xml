@@ -11,7 +11,7 @@
 		<mysql.version>5.1.39</mysql.version>
 		<spring.version>4.3.7.RELEASE</spring.version>
 		<mybatis.version>3.4.2</mybatis.version>
-		<mybaitsplus.version>2.0.5</mybaitsplus.version>
+		<mybatis-plus.version>2.0</mybatis-plus.version>
 		<fastjson.version>1.2.30</fastjson.version>
 		<spring-data-redis.version>1.8.1.RELEASE</spring-data-redis.version>
 		<jedis.version>2.9.0</jedis.version>
@@ -234,7 +234,7 @@
 		<dependency>
     		<groupId>com.baomidou</groupId>
     		<artifactId>mybatis-plus</artifactId>
-    		<version>${mybaitsplus.version}</version>
+    		<version>${mybatis-plus.version}</version>
 		</dependency>
 		<!-- alibaba工具包 -->
 		<dependency>

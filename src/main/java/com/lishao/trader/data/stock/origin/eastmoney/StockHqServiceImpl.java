@@ -38,7 +38,7 @@ public class StockHqServiceImpl implements StockHqService {
 		}
 		//调用回调方法
 		if(callback!=null&&stockHqList.size()>0){
-//			callback.setStockHqList(stockHqList);
+			callback.setStockHqList(stockHqList);
 			ThreadPoolManager.addTask(callback);
 		}
 		return stockHqList;

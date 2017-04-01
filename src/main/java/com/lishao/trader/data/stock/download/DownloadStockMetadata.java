@@ -18,6 +18,10 @@ import com.lishao.trader.data.stock.origin.eastmoney.callback.impl.StockHqByClas
 import com.lishao.trader.data.stock.origin.sina.bean.StockAll;
 import com.lishao.trader.data.stock.origin.sina.callback.StockAllCallBack;
 import com.lishao.trader.data.stock.origin.sina.callback.impl.StockAllSaveMetadataCallBack;
+import com.lishao.trader.stock.model.GpClassMetadata;
+import com.lishao.trader.stock.model.GpStockMetadata;
+import com.lishao.trader.stock.service.GpClassMetadataService;
+import com.lishao.trader.stock.service.GpStockMetadataService;
 
 /**
  * 下载元数据
@@ -30,10 +34,10 @@ public class DownloadStockMetadata {
 	OriginDataService originDataService;
 	@Resource
 	StockHqService stockHqService;
-//	@Resource
-//	GpClassMetadataService gpClassMetadataService;
-//	@Resource
-//	GpStockMetadataService gpStockMetadataService;
+	@Resource
+	GpClassMetadataService gpClassMetadataService;
+	@Resource
+	GpStockMetadataService gpStockMetadataService;
 	@Resource
 	StockMetadataDetailService stockMetadataDetailService;
 	Logger logger=Logger.getLogger(DownloadStockMetadata.class);
@@ -56,21 +60,21 @@ public class DownloadStockMetadata {
 	}
 	public ModuleReturn updateStockListingDate(){
 		ModuleReturn objRtn = new ModuleReturn(1);
-//		List<GpStockMetadata> stockList = gpStockMetadataService.selectAll();
-//		for(GpStockMetadata stockMetadata:stockList){
-//			try {
-//				//如果上市日期是空，才更新上市日期
-//				if(stockMetadata.getListingDate()==null){
-//					Date listingDate = stockMetadataDetailService.getListingDate(stockMetadata.getStockCodeFull());
-//					if(listingDate!=null){
-//						stockMetadata.setListingDate(listingDate);
-//						gpStockMetadataService.updateByPrimaryKeySelective(stockMetadata);
-//					}
-//				}
-//			} catch (Exception e) {
-//				e.printStackTrace();
-//			}
-//		}
+		List<GpStockMetadata> stockList = gpStockMetadataService.queryAll();
+		for(GpStockMetadata stockMetadata:stockList){
+			try {
+				//如果上市日期是空，才更新上市日期
+				if(stockMetadata.getListingDate()==null){
+					Date listingDate = stockMetadataDetailService.getListingDate(stockMetadata.getStockCodeFull());
+					if(listingDate!=null){
+						stockMetadata.setListingDate(listingDate);
+						gpStockMetadataService.update(stockMetadata);
+					}
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
 		return objRtn;
 	}
 	/**
@@ -78,15 +82,15 @@ public class DownloadStockMetadata {
 	 */
 	public ModuleReturn downloadStockClassMap(){
 		ModuleReturn objRtn = new ModuleReturn(1);
-//		List<GpClassMetadata> classList = gpClassMetadataService.selectAll();
-//		for(GpClassMetadata classMetadata:classList){
-//			StockHqByClassCallBack callback = (StockHqByClassCallBack)SpringUtil.getBean("stockHqByClassSaveClassStockMapCallBack");
-//			callback.setClassifyCode(classMetadata.getClassifyCode());
-//			callback.setPoolCode("saveStockClassMap");
-//			callback.setPoolName("保存指数股票对应数据");
-//			callback.setDesc("保存指数股票对应数据");
-//			List<String> resultList =stockHqService.getStockHqListByClassifyCode(classMetadata.getClassifyCode(), callback);
-//		}
+		List<GpClassMetadata> classList = gpClassMetadataService.queryAll();
+		for(GpClassMetadata classMetadata:classList){
+			StockHqByClassCallBack callback = (StockHqByClassCallBack)SpringUtil.getBean("stockHqByClassSaveClassStockMapCallBack");
+			callback.setClassifyCode(classMetadata.getClassifyCode());
+			callback.setPoolCode("saveStockClassMap");
+			callback.setPoolName("保存指数股票对应数据");
+			callback.setDesc("保存指数股票对应数据");
+			List<String> resultList =stockHqService.getStockHqListByClassifyCode(classMetadata.getClassifyCode(), callback);
+		}
 		return objRtn;
 	}
 }
