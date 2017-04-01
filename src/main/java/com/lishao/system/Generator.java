@@ -27,13 +27,13 @@ public class Generator {
 		AutoGenerator mpg = new AutoGenerator();
 		// 全局配置
 		GlobalConfig gc = new GlobalConfig();
-		gc.setOutputDir("D://temp/ibase4j");
+		gc.setOutputDir("D://temp/Trader");
 		gc.setFileOverride(false);
 		gc.setActiveRecord(true);
 		gc.setEnableCache(false);// XML 二级缓存
 		gc.setBaseResultMap(true);// XML ResultMap
 		gc.setBaseColumnList(false);// XML columList
-		gc.setAuthor("iBase4J");
+		gc.setAuthor("Trader");
 		// 自定义文件命名，注意 %s 会自动填充表实体属性！
 		// gc.setMapperName("%sDao");
 		// gc.setXmlName("%sDao");
@@ -47,7 +47,7 @@ public class Generator {
 		dsc.setDriverName("com.mysql.jdbc.Driver");
 		dsc.setUsername("root");
 		dsc.setPassword("root");
-		dsc.setUrl("jdbc:mysql://127.0.0.1:3306/iBase4J?characterEncoding=utf8");
+		dsc.setUrl("jdbc:mysql://127.0.0.1:3306/trader?characterEncoding=utf8");
 		mpg.setDataSource(dsc);
 		// 策略配置
 		StrategyConfig strategy = new StrategyConfig();
@@ -78,7 +78,7 @@ public class Generator {
 		mpg.setStrategy(strategy);
 		// 包配置
 		PackageConfig pc = new PackageConfig();
-		pc.setParent("org.ibase4j");
+		pc.setParent("com.lishao.trader");
 		pc.setModuleName("sys");
 		mpg.setPackageInfo(pc);
 		// 注入自定义配置，可以在 VM 中使用 cfg.abc 设置的值

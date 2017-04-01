@@ -19,7 +19,7 @@ import com.lishao.trader.common.ConstantUtil;
 @Component
 public class DownloadTradeDetail {
 	Logger logger = Logger.getLogger(DownloadTradeDetail.class);
-	@Resource
+	//@Resource
 //	GpStockKlineDService stockKlineDService;
 	/**
 	 * 下载股票交易数据，通知模式

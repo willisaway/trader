@@ -20,11 +20,14 @@
 		<setting name="jdbcTypeForNull" value="NULL" />
 		<setting name="lazyLoadTriggerMethods" value="equals,clone,hashCode,toString" />
 	</settings>
-	<typeAliases>
-		<typeAlias alias="gpClassDimension" type="com.lishao.trader.stock.bean.entity.GpClassDimension" />
-	</typeAliases>
 	
 	<!--typeHandlers>
 		<typeHandler handler="com.haier.openplatform.dao.mybatis.SerializableTypeHandler"/>
 	</typeHandlers-->
+	<plugins>
+		<!-- 分页查询插件 -->
+		<plugin interceptor="com.baomidou.mybatisplus.plugins.PaginationInterceptor">
+			<property name="dialectType" value="mysql" />
+		</plugin>
+	</plugins>
 </configuration>

@@ -33,7 +33,7 @@ public abstract class BaseService<P extends BaseProvider<T>, T extends BaseModel
 	/** 删除 */
 	public void delete(Long id) {
 		Assert.notNull(id, "ID");
-		provider.delete(id, WebUtil.getCurrentUserId());
+		provider.delete(id);
 	}
 
 	/** 根据Id查询 */

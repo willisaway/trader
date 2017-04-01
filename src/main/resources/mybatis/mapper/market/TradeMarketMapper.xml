@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lishao.trader.market.dao.TradeMarketMapper" >
+  <resultMap id="BaseResultMap" type="com.lishao.trader.market.model.TradeMarket" >
+    <id column="ROW_ID" property="rowId" jdbcType="BIGINT" />
+    <result column="MARKET_CODE" property="marketCode" jdbcType="VARCHAR" />
+    <result column="MARKET_NAME" property="marketName" jdbcType="VARCHAR" />
+    <result column="MARKET_DESC" property="marketDesc" jdbcType="VARCHAR" />
+    <result column="REMARK" property="remark" jdbcType="VARCHAR" />
+    <result column="DELETED_FLAG" property="deletedFlag" jdbcType="CHAR" />
+    <result column="ORIGIN_CODE" property="originCode" jdbcType="VARCHAR" />
+    <result column="CREATED_DATE" property="createdDate" jdbcType="TIMESTAMP" />
+    <result column="LAST_UPD_DATE" property="lastUpdDate" jdbcType="TIMESTAMP" />
+    <result column="MODIFICATION_NUM" property="modificationNum" jdbcType="DECIMAL" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ROW_ID, MARKET_CODE, MARKET_NAME, MARKET_DESC, REMARK, DELETED_FLAG, ORIGIN_CODE, 
+    CREATED_DATE, LAST_UPD_DATE, MODIFICATION_NUM
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from trade_market
+    where ROW_ID = #{rowId,jdbcType=BIGINT}
+  </select>
+  <select id="selectIdByMap" parameterType="java.util.Map" resultType="java.lang.Long">
+    select a.row_id from trade_market a
+	WHERE a.deleted_flag='0'
+	<if test="cm.rowId != null and cm.rowId != ''">
+      AND a.row_id = #{cm.rowId}
+	</if>
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from trade_market
+    where ROW_ID = #{rowId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insertSelective" parameterType="com.lishao.trader.market.model.TradeMarket" >
+    insert into trade_market
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="rowId != null" >
+        ROW_ID,
+      </if>
+      <if test="marketCode != null" >
+        MARKET_CODE,
+      </if>
+      <if test="marketName != null" >
+        MARKET_NAME,
+      </if>
+      <if test="marketDesc != null" >
+        MARKET_DESC,
+      </if>
+      <if test="remark != null" >
+        REMARK,
+      </if>
+      <if test="deletedFlag != null" >
+        DELETED_FLAG,
+      </if>
+      <if test="originCode != null" >
+        ORIGIN_CODE,
+      </if>
+      <if test="createdDate != null" >
+        CREATED_DATE,
+      </if>
+      <if test="lastUpdDate != null" >
+        LAST_UPD_DATE,
+      </if>
+      <if test="modificationNum != null" >
+        MODIFICATION_NUM,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="rowId != null" >
+        #{rowId,jdbcType=BIGINT},
+      </if>
+      <if test="marketCode != null" >
+        #{marketCode,jdbcType=VARCHAR},
+      </if>
+      <if test="marketName != null" >
+        #{marketName,jdbcType=VARCHAR},
+      </if>
+      <if test="marketDesc != null" >
+        #{marketDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="deletedFlag != null" >
+        #{deletedFlag,jdbcType=CHAR},
+      </if>
+      <if test="originCode != null" >
+        #{originCode,jdbcType=VARCHAR},
+      </if>
+      <if test="createdDate != null" >
+        #{createdDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastUpdDate != null" >
+        #{lastUpdDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modificationNum != null" >
+        #{modificationNum,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.lishao.trader.market.model.TradeMarket" >
+    update trade_market
+    <set >
+      <if test="marketCode != null" >
+        MARKET_CODE = #{marketCode,jdbcType=VARCHAR},
+      </if>
+      <if test="marketName != null" >
+        MARKET_NAME = #{marketName,jdbcType=VARCHAR},
+      </if>
+      <if test="marketDesc != null" >
+        MARKET_DESC = #{marketDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        REMARK = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="deletedFlag != null" >
+        DELETED_FLAG = #{deletedFlag,jdbcType=CHAR},
+      </if>
+      <if test="originCode != null" >
+        ORIGIN_CODE = #{originCode,jdbcType=VARCHAR},
+      </if>
+      <if test="createdDate != null" >
+        CREATED_DATE = #{createdDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastUpdDate != null" >
+        LAST_UPD_DATE = #{lastUpdDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modificationNum != null" >
+        MODIFICATION_NUM = #{modificationNum,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where ROW_ID = #{rowId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.lishao.trader.market.model.TradeMarket" >
+    update trade_market
+    set MARKET_CODE = #{marketCode,jdbcType=VARCHAR},
+      MARKET_NAME = #{marketName,jdbcType=VARCHAR},
+      MARKET_DESC = #{marketDesc,jdbcType=VARCHAR},
+      REMARK = #{remark,jdbcType=VARCHAR},
+      DELETED_FLAG = #{deletedFlag,jdbcType=CHAR},
+      ORIGIN_CODE = #{originCode,jdbcType=VARCHAR},
+      CREATED_DATE = #{createdDate,jdbcType=TIMESTAMP},
+      LAST_UPD_DATE = #{lastUpdDate,jdbcType=TIMESTAMP},
+      MODIFICATION_NUM = #{modificationNum,jdbcType=DECIMAL}
+    where ROW_ID = #{rowId,jdbcType=BIGINT}
+  </update>
+</mapper>

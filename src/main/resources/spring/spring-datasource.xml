@@ -18,8 +18,8 @@
 		http://www.springframework.org/schema/lang/spring-lang-3.1.xsd">
 
 	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
-        <property name="driverClass" value="oracle.jdbc.driver.OracleDriver"></property>
-        <property name="jdbcUrl" value="jdbc:oracle:thin:@localhost:1521:orcl"></property>
+        <property name="driverClass" value="com.mysql.jdbc.Driver"></property>
+        <property name="jdbcUrl" value="jdbc:mysql://localhost:3306/trader?useUnicode=true&amp;characterEncoding=UTF-8"></property>
         <property name="user" value="trader"></property>
         <property name="password" value="trader"></property>
         <property name="connectionTesterClassName" value="com.mchange.v2.c3p0.impl.DefaultConnectionTester"></property>

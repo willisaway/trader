@@ -18,9 +18,9 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class QueueSender {
-	@Autowired
-	@Qualifier("jmsQueueTemplate")
-	private JmsTemplate jmsTemplate;
+	//@Autowired
+	//@Qualifier("jmsQueueTemplate")
+//	private JmsTemplate jmsTemplate;
 
 	/**
 	 * 发送一条消息到指定的队列（目标）
@@ -29,10 +29,10 @@ public class QueueSender {
 	 * @param message 消息内容
 	 */
 	public void send(String queueName, final Serializable message) {
-		jmsTemplate.send(queueName, new MessageCreator() {
-			public Message createMessage(Session session) throws JMSException {
-				return session.createObjectMessage(message);
-			}
-		});
+//		jmsTemplate.send(queueName, new MessageCreator() {
+//			public Message createMessage(Session session) throws JMSException {
+//				return session.createObjectMessage(message);
+//			}
+//		});
 	}
 }

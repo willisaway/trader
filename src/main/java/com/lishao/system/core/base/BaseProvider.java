@@ -15,7 +15,7 @@ public interface BaseProvider<T extends BaseModel> {
 	public T update(T record);
 
 	@Transactional
-	public void delete(Long id, Long userId);
+	public void delete(Long id);
 
 	public T queryById(Long id);
 
